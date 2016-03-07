@@ -24,10 +24,19 @@ $router->add('/reset-password/{code}/{email}', array(
     'action' => 'resetPassword'
 ));
 
-$router->add('/consultar', array(
-	'controller' => 'comercio',
-	'action' => 'consultar'
+$router->add('/perfil', array(
+	'controller' => 'evaluacion',
+	'action' => 'perfil'
 	));
 
+$router->add('/evaluacion', array(
+    'controller' => 'evaluacion',
+    'action' => 'evaluacion'
+    ));
+
+$router->add('/grupos', array(
+    'controller' => 'evaluacion',
+    'action' => 'gruposEvaluacion'
+    ));
 
 return $router;

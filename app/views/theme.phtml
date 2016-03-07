@@ -42,8 +42,8 @@
     <!-- tema personalizado para imannova -->
 
     <?php print($this->tag->stylesheetLink("css/imannova-custom.css"))?>
-
     <?php print($this->tag->stylesheetLink("css/imannova-custom-nav.css"))?>
+    <?php print($this->tag->stylesheetLink("css/imannova-custom-profile-ui.css"))?>
 	<!-- END Stylesheets -->
 
 	<?php
@@ -56,6 +56,7 @@
 	
 	<!-- Modernizr (browser feature detection library) & Respond.js (enables responsive CSS code on browsers that don't support it, eg IE8) -->
 	<?php print($this->tag->javascriptInclude("js/vendor/modernizr-respond.min.js"))?>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 <body class="page-loading">
@@ -65,16 +66,18 @@
 
 	            <header class="navbar navbar-default theme-banco-central ">
 	                <?php if(isset($topMenu) && $topMenu!=null) 
-						echo $this->view->render($topMenu,array('pcData'=>$pcData));
+						echo $this->view->render($topMenu,array('pcData'=>$pcData, 'menuSel' => $menuSel));
 					?>
 	            </header>
 	            <!-- END Header -->
 
 	            <!-- Page Content -->
 	            <div id="page-content" class="clearfix">
+	            	<div class="content-width">
 		            <?php if(isset($pcView) && $pcView!=null) 
 							echo $this->view->render($pcView,array('pcData'=>$pcData));
 					?>
+					</div>
 	            </div>
 	            <!-- END Page Content -->
 
@@ -97,7 +100,6 @@
     	<!-- END Page Container -->
 
 
-
 	<!-- Remember to include excanvas for IE8 chart support -->
 	<!--[if IE 8]><?php print($this->tag->javascriptInclude("js/helpers/excanvas.min.js"))?><![endif]-->
 
@@ -105,6 +107,9 @@
 	<?php print($this->tag->javascriptInclude("js/vendor/jquery-1.11.3.min.js"))?>
 	<?php print($this->tag->javascriptInclude("js/vendor/bootstrap.min.js"))?>
 	<?php print($this->tag->javascriptInclude("js/plugins.js"))?>
+	
+
+
 	<?php
 	if(isset($jsScript) && $jsScript!=null){
 	?>
@@ -132,5 +137,7 @@
 	<?php
 		}
 	?>	
+
+
 </body>
 </html>

@@ -2,6 +2,12 @@ body {
 	/*background-color: #F1F3F5;*/
 }
 
+.content-width {
+	background-color: white;
+	margin-top: -68px;
+    padding-top: 56px;
+}
+
 /*tamaño seccion content toma tamaño screen*/
 .style-alt #page-content {
     min-height: calc(100vh - 6.5em);

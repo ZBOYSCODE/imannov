@@ -6,7 +6,7 @@
 }
 .navbar-inverse {
     background: #4D5061;
-    border-bottom: 4px solid #60B078;
+    border-bottom: 4px solid #037E8C;
     color: #FFF;
 }
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
@@ -22,8 +22,8 @@
 .navbar-inverse .navbar-nav > .active >a:visited,
 .navbar-inverse .navbar-nav>li:hover>a:hover {
     background-image: #60B078;
-    background: #60B078;
-    background-color: #60B078!important;/*necessario para forcar a regra do bootstrap que tem important*/
+    background: #037E8C;
+    background-color: #037E8C!important;/*necessario para forcar a regra do bootstrap que tem important*/
     color: #FFF;
     -webkit-transition: all  ease-in .3s;
     -o-transition: all  ease-in .3s;

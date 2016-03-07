@@ -1985,7 +1985,7 @@ a[data-toggle="lightbox-image"]:hover img {
 }
 
 .navbar.navbar-inverse {
-    background-color: #4c5471;
+    background-color: #024959;
 }
 
 .navbar-fixed-top,
@@ -3699,7 +3699,7 @@ p, .table, .alert, .carousel {
 
 /* Alternative Main Style */
 .style-alt #page-content {
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
 }
 
 .style-alt .block {
