@@ -15,59 +15,108 @@ class evaluacionController extends ControllerBase
 
     public function evaluacionAction()
     {   
+
+        $encuesta = array(
+            array('nombre'=>'Aprendizaje', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Autocrítica', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Calidad', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Calidez', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Comunicación', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Consecuencia', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Perseverancia y Disciplina', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Eficiencia', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Honestidad', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Justicia', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Libertad', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Originalidad', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Pro-actividad', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Puntualidad', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Responsabilidad', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Seguridad', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Tolerancia al cambio', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Trabajo en Equipo', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Superación', 'pregunta' => array('pregunta1', 'pregunta2')),
+            array('nombre'=>'Liderazgo' , 'pregunta' => array('pregunta1', 'pregunta2'))
+            );
+
          $jsScript = "
-        $('.stp-trat-btn').click(
-            function(){
 
-                $('#stp-trat-'+$(this).data('stp')+' .stp-trat-btn').removeClass('active');
-                $(this).addClass('active');
+                $('#cerrarModal').click(
+                    function(){
+                        $('#barra-progreso').css('width','10%'); 
+                        $('#barra-progreso').removeClass('progress-bar-success');
+                        $('#barra-progreso').addClass('progress-bar-danger');
+                        $('#stp-trat-pregunta1 .stp-trat-btn').addClass('active');
+                        $('#stp-trat-pregunta1').css('display','block'); 
+                        $('#stp-trat-resultado').css('display','none'); 
+                    }
+                );
 
-                $('.stp-trat').css('display','none');
-                
-                $('#stp-trat-'+$(this).data('next')).css('display','block');                
-                
-                if($(this).data('type')=='pregunta1'){
-                    $('#barra-progreso').css('width','33%');
-                }
-                if($(this).data('type')=='pregunta2'){
-                    $('#barra-progreso').css('width','66%');
-                    $('#barra-progreso').removeClass('progress-bar-danger');
-                    $('#barra-progreso').addClass('progress-bar-warning');
-                }
+                $('.stp-trat-btn').click(
+                    function(){
 
-                if($(this).data('type')=='pregunta3'){
-                    $('#barra-progreso').css('width','100%');
-                    $('#barra-progreso').removeClass('progress-bar-warning');
-                    $('#barra-progreso').addClass('progress-bar-success');
-                }
-            }
-        );
-        $('.stp-trat-btn-menu').click(
-            function(){
+                        $('#stp-trat-'+$(this).data('stp')+' .stp-trat-btn').removeClass('active');
+                        $(this).addClass('active');
 
-                if($(this).data('next') == 'pregunta1')
-                {
-                    $('#barra-progreso').css('width','10%');    
-                    $('#barra-progreso').removeClass('progress-bar-warning');
-                    $('#barra-progreso').addClass('progress-bar-danger');
-                }
+                        $('.stp-trat').css('display','none');
+                        
+                        $('#stp-trat-'+$(this).data('next')).css('display','block');                
+                        
+                        if($(this).data('type')=='pregunta1'){
+                            $('#barra-progreso').css('width','33%');
+                        }
 
-                if($(this).data('next') == 'pregunta2')
-                {
-                    $('#barra-progreso').css('width','33%');    
-                    $('#barra-progreso').removeClass('progress-bar-warning');
-                    $('#barra-progreso').addClass('progress-bar-danger');
-                }               
+                        if($(this).data('type')=='pregunta2'){
+                            $('#barra-progreso').css('width','66%');
+                            $('#barra-progreso').removeClass('progress-bar-danger');
+                            $('#barra-progreso').addClass('progress-bar-warning');
+                        }
 
-                $('.stp-trat').css('display','none');
-                $('#stp-trat-'+$(this).data('next')).css('display','block');
-            }
-        );      ";
+                        if($(this).data('type')=='pregunta3'){
+                            $('#barra-progreso').css('width','100%');
+                            $('#barra-progreso').removeClass('progress-bar-warning');
+                            $('#barra-progreso').addClass('progress-bar-success');
+                        }
+                    }
+                );
+
+                $('.stp-trat-btn-menu').click(
+                    function(){
+
+                        if($(this).data('next') == 'pregunta1')
+                        {
+                            $('#barra-progreso').css('width','10%');    
+                            $('#barra-progreso').removeClass('progress-bar-warning');
+                            $('#barra-progreso').addClass('progress-bar-danger');
+                        }
+
+                        if($(this).data('next') == 'pregunta2')
+                        {
+                            $('#barra-progreso').css('width','33%');    
+                            $('#barra-progreso').removeClass('progress-bar-warning');
+                            $('#barra-progreso').addClass('progress-bar-danger');
+                        }               
+
+                        $('.stp-trat').css('display','none');
+                        $('#stp-trat-'+$(this).data('next')).css('display','block');
+                    }
+                );   
+
+                $(function() {
+                    $('#search').on('keyup', function() {
+                        var pattern = $(this).val();
+                        $('.searchable-container .items').hide();
+                        $('.searchable-container .items').filter(function() {
+                            return $(this).text().match(new RegExp(pattern, 'i'));
+                        }).show();
+                    });
+                });  
+         ";
 
         $menu = 'menu/topMenu';
         $content = 'evaluacion/evaluacion';
 
-        echo $this->view->render('theme', array('topMenu'=>$menu, 'menuSel'=>'evaluar','pcView'=>$content, 'pcData'=>'', 'jsScript'=>$jsScript));    
+        echo $this->view->render('theme', array('topMenu'=>$menu, 'menuSel'=>'evaluar','pcView'=>$content, 'pcData'=>$encuesta, 'jsScript'=>$jsScript));    
     }
 
     public function perfilAction() {
@@ -109,10 +158,10 @@ class evaluacionController extends ControllerBase
               var data = google.visualization.arrayToDataTable([
                 ['Habilidad', 'Porcentaje',],
                 ['Liderazgo', 60],
-                ['Expresión Oral', 73],
-                ['Creatividad', 78],
-                ['Actiud Positiva', 80],
-                ['Tolerancia', 68]
+                ['Responsbilidad', 73],
+                ['Honestidad', 78],
+                ['Trabajo en equipo', 80],
+                ['Tolerancia al cambio', 68]
               ]);
 
               var options = {

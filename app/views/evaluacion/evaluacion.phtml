@@ -1,2 +1,233 @@
+<div class="container">
 
-<h1>No disponible aún</h1>
+
+		<div class="left-col-new" style="text-align: center; min-height: 100px;">
+
+			<div class="row center-block">
+			<div class="col-lg-4">
+				<div class="profile-header-container">   
+		    		<div class="profile-header-img">
+		                <img class="img-circle" src="<?php print($this->url->get("img/avatars/avatar4.jpg"))?>" />
+		                <!-- badge -->
+		                <div class="rank-label-container">
+		                    <span class="label label-default rank-label">Equipo de Soporte</span>
+		                </div>
+		            </div>
+		        </div> 
+	        </div>
+	        <div class="col-lg-4">
+	        <h2> Responder Evaluación</h2>
+	        <h3> Evaluando a: <strong> Felipe Jorquera A. </strong> </h3>
+	        </div>
+			</div>
+		</div>
+
+		<div class="col-lg-10 col-md-10 col-sm-12 center-block bhoechie-tab">
+		    <!-- flight section -->
+		    <div class="bhoechie-tab-content fade in active">
+		    	<div class="row">
+				<h2>Selecciona 3 habilidades a evaluar </h2>
+			    <div class="form-group">
+			        <div class="col-sm-12 col-md-12 col-lg-12">
+			            <input type="search" class="form-control" id="search" placeholder="Buscar Habilidad...">
+			        </div>
+			    </div>
+			    </div>
+			    <div class="row">
+			        <div class="form-group">
+			            <div class="searchable-container">
+
+			            	<?php foreach ($pcData as $habilidad) { ?>
+			            		
+			            	
+			                <div class="items col-xs-12 col-sm-5 col-md-3 col-lg-3">
+			                    <div class="info-block block-info clearfix">
+			                        <div class="square-box pull-left">
+			                            <span class="glyphicon glyphicon-tags glyphicon-lg"></span>
+			                        </div>
+			                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
+			                            <label class="btn btn-default">
+			                                <div class="bizcontent">
+			                                    <input type="checkbox" name="var_id[]" autocomplete="off" value="">
+			                                    <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+			                                    <h5><?php print_r($habilidad['nombre']);?></h5>
+			                                </div>
+			                            </label>
+			                        </div>
+			                    </div>
+			                </div>
+			               <?php } ?>
+			            </div>
+			        </div>
+				</div>
+		    </div>
+
+		    <div class="" style="text-align: center; padding-top: 50px;">
+		    	<div class="block-title clearfix" style="width: 50%; display: inline-block;">
+					<a href="#modal-encuesta" data-toggle="modal" class="menu-config-grupo list-group-item bg-primary text-center btn-modal">
+					<i class="fa fa-plus fa-3x "></i><br/>Responder Evaluación
+					</a>
+				</div>
+			</div>
+
+		</div>
+
+
+
+</div>
+
+
+<!-- modal encuesta -->
+<div id="modal-encuesta" data-keyboard="false" data-backdrop="static" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+            <!-- Updates Title -->
+            <div class="block-title" style=" margin: 0px;">
+                <button type="button" class="close closeModal" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2><strong>Encuesta</strong></h2>
+            </div>
+            <!-- END Updates Title -->
+            <div class="modal-body">
+
+				<div class="progress progress-striped active">
+					<div id="barra-progreso" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></div>
+				</div>	
+            	<!-- Pregunta 1 -->
+
+				<div class="stp-trat"  id="stp-trat-pregunta1">
+			
+					<h3 class="text-center" style="padding-bottom:50px;">
+						¿Felipe Jorquera Propone más de una solución para un mismo problema?
+					</h3>
+					<div class="form-group row text-center">
+						<div class="col-lg-12">
+							<a href="#" class="widget btn-info stp-trat-btn h" data-next="pregunta2" data-stp="" data-val="" data-type="pregunta1" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
+								<div class="widget-simple">
+									<img src="<?php echo $this->url->get("/img/icon_feliz.png"); ?>"alt="" height="32px" width="32px">
+								</div>
+							</a>
+						</div>	
+						<div class="col-lg-12">
+							<a href="#" class="widget btn-info stp-trat-btn" data-next="pregunta2" data-stp="" data-val="" data-type="pregunta1" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
+								<div class="widget-simple">
+									<img src="<?php echo $this->url->get("/img/icon_normal1.png"); ?>"alt="" height="32px" width="32px">
+								</div>
+							</a>
+						</div>	
+						<div class="col-lg-12">
+							<a href="#" class="widget btn-info stp-trat-btn" data-next="pregunta2" data-stp="" data-val="" data-type="pregunta1" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
+								<div class="widget-simple">
+									<img src="<?php echo $this->url->get("/img/icon_triste.png"); ?>"alt="" height="32px" width="32px">
+								</div>
+							</a>
+						</div>													
+                    </div>
+					<div class="form-group row text-center" style="margin-top: 25px;width: auto;margin-left: -20px;margin-right: -29px;">	
+						<div class="btn-group" style="width: 100%;">
+							<a href="#" class="btn btn-primary active" style="width: 33%;border-radius: 0px;">Originalidad</a>
+							<a href="#" class="btn btn-primary" style="width: 33%;" disabled>Comunicación</a>
+							<a href="#" class="btn btn-primary" style="width: 33%;border-radius: 0px;" disabled>Seguridad</a>
+						</div>
+                    </div>                    
+				</div>
+
+				<!-- Pregunta 2 -->
+
+				<div class="stp-trat"  id="stp-trat-pregunta2" style="display:none;">
+					<h3 class="text-center" style="padding-bottom:50px;">
+						¿Felipe Jorquera Se comunica sin problemas con sus compañeros?
+					</h3>				
+					<div class="form-group row text-center">
+							<div class="col-lg-12">
+								<a href="#" class="widget btn-info stp-trat-btn" data-next="pregunta3" data-stp="" data-val="" data-type="pregunta2" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
+									<div class="widget-simple">
+										<img src="<?php echo $this->url->get("/img/icon_feliz.png"); ?>"alt="" height="32px" width="32px">
+									</div>
+								</a>
+							</div>														
+							<div class="col-lg-12">
+								<a href="#" class="widget btn-info stp-trat-btn" data-next="pregunta3" data-stp="" data-val="" data-type="pregunta2" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
+									<div class="widget-simple">
+										<img src="<?php echo $this->url->get("/img/icon_normal1.png"); ?>"alt="" height="32px" width="32px">
+									</div>
+								</a>
+							</div>	
+							<div class="col-lg-12">
+								<a href="#" class="widget btn-info stp-trat-btn" data-next="pregunta3" data-stp="" data-val="" data-type="pregunta2" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
+									<div class="widget-simple">
+										<img src="<?php echo $this->url->get("/img/icon_triste.png"); ?>"alt="" height="32px" width="32px">
+									</div>
+								</a>
+							</div>														
+					</div>
+					<div class="form-group row text-center" style="margin-top: 25px;width: auto;margin-left: -20px;margin-right: -29px;">	
+						<div class="btn-group" style="width: 100%;">
+							<a href="#" class="btn btn-primary stp-trat-btn-menu" data-next="pregunta1" style="width: 33%;border-radius: 0px;">Originalidad</a>
+							<a href="#" class="btn btn-primary active" style="width: 33%;">Comunicación</a>
+							<a href="#" class="btn btn-primary" style="width: 33%;border-radius: 0px;" disabled>Seguridad</a>
+						</div>
+					</div>															
+				</div>	
+
+				<!-- Pregunta 3 -->
+
+				<div class="stp-trat"  id="stp-trat-pregunta3" style="display:none;">
+					<h3 class="text-center" style="padding-bottom:50px;">
+						¿Felipe Jorquera Conoce y realiza su trabajo de acuerdo a normas y procedimientos definidos por la industria y la organización?
+					</h3>				
+					<div class="form-group row text-center">
+						<div class="col-lg-12">
+							<a href="#" class="widget btn-info stp-trat-btn" data-next="resultado" data-stp="pregunta3" data-val="OD" data-type="pregunta3" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
+								<div class="widget-simple">
+									<img src="<?php echo $this->url->get("/img/icon_feliz.png"); ?>"alt="" height="32px" width="32px">
+								</div>
+							</a>
+						</div>												
+						<div class="col-lg-12">
+							<a href="#" class="widget btn-info stp-trat-btn" data-next="resultado" data-stp="pregunta3" data-val="" data-type="pregunta3" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
+								<div class="widget-simple">
+									<img src="<?php echo $this->url->get("/img/icon_normal1.png"); ?>"alt="" height="32px" width="32px">
+								</div>
+							</a>
+						</div>												
+					</div>	
+					<div class="form-group row text-center">
+						<div class="col-lg-12">
+							<a href="#" class="widget btn-info stp-trat-btn" data-next="resultado" data-stp="pregunta3" data-val="" data-type="pregunta3" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
+								<div class="widget-simple">
+									<img src="<?php echo $this->url->get("/img/icon_triste.png"); ?>"alt="" height="32px" width="32px">
+								</div>
+							</a>
+						</div>												
+					</div>
+					<div class="form-group row text-center" style="margin-top: 25px;width: auto;margin-left: -20px;margin-right: -29px;">	
+						<div class="btn-group" style="width: 100%;">
+							<a href="#" class="btn btn-primary stp-trat-btn-menu" data-next="pregunta1" style="width: 33%;border-radius: 0px;">Originalidad</a>
+							<a href="#" class="btn btn-primary stp-trat-btn-menu" style="width: 33%;" data-next="pregunta2">Comunicación</a>
+							<a href="#" class="btn btn-primary active" style="width: 33%;border-radius: 0px;">Seguridad</a>
+						</div>
+					</div>																		
+				</div>	
+
+				<!-- Resultado -->		
+
+				<div class="stp-trat"  id="stp-trat-resultado" style="display:none;">
+					<div class="form-group row text-center" style="margin-top: -15px;">
+						<div class="col-lg-12"  style="margin-top:20%">
+							<h2><i class="fa fa-hand-peace-o"></i>¡<strong>Gracias</strong> por responder!</h2> <br>
+						</div>
+					</div>
+				</div>																							
+            </div>
+
+
+
+		
+            <div class="modal-footer">
+                <div class="btn-group btn-group-sm pull-right">
+                    <a id="cerrarModal" class="btn btn-sm btn-default pull-right" data-dismiss="modal" href=""> Cerrar</a>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>

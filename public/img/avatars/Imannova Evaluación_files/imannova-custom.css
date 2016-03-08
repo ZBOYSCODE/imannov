@@ -222,14 +222,9 @@ body {
 	background-color: #1ec1b8; 
 }
 
-.menu-config-grupo:hover {
+.menu-config-grupo:hover, .menu-config-grupo:focus {
 	color: #1ec1b8 !important;
-	background-color: white !important; 
-}
-
-.menu-config-grupo:focus {
-	color: white !important;
-	background-color: #1ec1b8 !important; 
+	background-color: white ; 
 }
 
 .menu-config-grupo-btn {
@@ -273,32 +268,13 @@ body {
 .searchable-container label.btn-default.active{background-color:#007ba7;color:#FFF}
 .searchable-container label.btn-default{width:90%;border:1px solid #efefef;margin:5px; box-shadow:5px 8px 8px 0 #ccc;}
 .searchable-container label .bizcontent{width:100%;}
-.searchable-container .btn-group{width:100%}
+.searchable-container .btn-group{width:90%}
 .searchable-container .btn span.glyphicon{
     opacity: 0;
 }
 .searchable-container .btn.active span.glyphicon {
     opacity: 1;
 }
-
-/**
- * Profile image component
- */
-.profile-header-container{
-    margin: 0 auto;
-    text-align: center;
-}
-
-.profile-header-img {
-    padding: 20px;
-}
-
-.profile-header-img > img.img-circle {
-    width: 120px;
-    height: 120px;
-    border: 2px solid #51D2B7;
-}
-
 
 
 
