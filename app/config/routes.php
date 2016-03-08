@@ -39,4 +39,9 @@ $router->add('/grupos', array(
     'action' => 'gruposEvaluacion'
     ));
 
+$router->add('/grupos/configurar', array(
+    'controller' => 'evaluacion',
+    'action' => 'gruposConfigurar'
+    ));
+
 return $router;

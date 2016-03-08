@@ -585,19 +585,19 @@ a.sidebar-title:focus {
     padding: 2px;
     width: 52px;
     height: 52px;
-    border-radius: 25px;
-    background: url('../img/template/ie8_opacity_light_10.png') repeat;
-    background: rgba(255, 255, 255, 0.10);
+    border-radius: 22px;
+    /*background: url('../img/template/ie8_opacity_light_10.png') repeat;
+    background: rgba(255, 255, 255, 0.10);*/
 }
 
 .chat-users a span {
     position: absolute;
     top: 0;
     right: 0;
-    width: 6px;
+    /*width: 6px;
     height: 6px;
     border-radius: 3px;
-    background-color: #cccccc;
+    background-color: #cccccc;*/
 }
 
 .chat-users a img {
@@ -607,29 +607,23 @@ a.sidebar-title:focus {
     filter: alpha(opacity=50);
 }
 
-.chat-users a.chat-user-online,
+/*.chat-users a.chat-user-online,
 .chat-users a.chat-user-away,
 .chat-users a.chat-user-busy {
     background: url('../img/template/ie8_opacity_light_75.png') repeat;
     background: rgba(255, 255, 255, 0.75);
-}
+}*/
 
-.chat-users a.chat-user-online span {
-    background-color: #2ecc71;
-}
 
-.chat-users a.chat-user-away span {
-    background-color: #f39c12;
-}
-
-.chat-users a.chat-user-busy span {
-    background-color: #e74c3c;
-}
 
 .chat-users a:hover {
-    background-color: #ffffff;
+    background-color: #1ec1b8;
     -webkit-box-shadow: 0 0 4px 2px #999999;
     box-shadow: 0 0 4px 2px #999999;
+}
+
+.after-focus {
+     background-color: green;
 }
 
 .chat-users a:hover img,

@@ -1,0 +1,266 @@
+<!-- Widgets Row -->
+<div class="row" style="padding-top: 40px;">
+
+	<div class="col-lg-12 bhoechie-tab-container">
+
+		<div class="col-lg-3 col-md-3 col-sm-5 bhoechie-tab-menu">
+			<div class="list-group bg-color-primary  ">
+
+				<div class="list-group-item inactive" style="height:auto;">
+					<ul class="chat-users clearfix">
+						<?php for ($i = 1; $i <= 11; $i++) { ?>
+								<li>
+								<a href="javascript:void(0)" class="chat-user-online" data-value="<?php echo $i; ?>">
+								<span style="color:#1ec1b8;"><i id="check-users<?php echo $i; ?>" class="hidden hi hi-ok"></i></span>
+								<img src="<?php print($this->url->get("img/avatars/avatar".$i.".jpg"))?>" alt="avatar" class="img-circle">
+								</a>
+								</li>
+						<?php } ?>
+					</ul>
+
+
+				</div>
+				<div class="list-group bg-color-primary ">
+					<a href="#modal-agregar-persona" data-toggle="modal" class="btn-default list-group-item bg-primary text-center ">
+					<i class="gi gi-plus"></i><br/>Agregar persona al grupo
+					</a>
+				</div>
+
+			</div>
+		</div>
+		            
+		<div class="col-lg-9 col-md-9 col-sm-7 bhoechie-tab">
+				<ul class="breadcrumb ">
+			<li><a href="<?php print($this->url->get('grupos')) ?>"> Grupos de Evaluación</a></li>
+			<li>Configurar</li>
+		</ul>
+		<h3> > Configurando: <strong>Grupo de Soporte</strong> </h3>
+
+		<div class="block">
+			<div class="block-title clearfix">
+			<a href="#modal-nueva-eval" data-toggle="modal" class="menu-config-grupo list-group-item bg-primary text-center ">
+				<i class="fa fa-plus fa-3x "></i><br/>Nueva Evaluación para el grupo
+				</a>
+			</div>
+			<div class="block-content-full">
+				<table class="table table-borderless table-striped table-vcenter">
+				<thead>
+				<tr>
+				<td colspan="3">
+				<ul class="list-inline remove-margin">
+				<li>
+				<i class="fa fa-warning"></i>
+				<a href="javascript:void(0)" class="text-danger"><strong>10 Evaluaciones en curso </strong></a>
+				</li>
+				<li>
+				<i class="fa fa-check"></i>
+				<a href="javascript:void(0)" class="text-success"><strong>22 Evaluaciones cerradas</strong></a>
+				</li>
+				</ul>
+				</td>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="text-success">
+						<i class="fa fa-exclamation-circle fa-2x" data-toggle="tooltip" title="" data-original-title="View all"></i>
+						</a>
+					</td>
+					<td>
+						<strong>Evaluación Semana 1 Marzo</strong>
+						<div class="text-muted">Liberada hace 2 días</div>
+					</td>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="btn btn-default">
+						<i class="fa fa-comments"></i> 3
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="text-success">
+						<i class="fa fa-exclamation-circle fa-2x" data-toggle="tooltip" title="" data-original-title="View all"></i>
+						</a>
+					</td>
+					<td>
+						<strong>Evaluación Post Finalizacion proyecto Zenta 1</strong>
+						<div class="text-muted">Liberada hace 10 días</div>
+					</td>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="btn btn-default">
+						<i class="fa fa-comments"></i> 7
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="text-success">
+						<i class="fa fa-exclamation-circle fa-2x" data-toggle="tooltip" title="" data-original-title="View all"></i>
+						</a>
+					</td>
+					<td>
+						<strong>Evaluación Actividades Semana Aniversario</strong>
+						<div class="text-muted">Liberada hace 14 días</div>
+					</td>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="btn btn-default">
+						<i class="fa fa-comments"></i> 11
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="text-success">
+						<i class="fa fa-exclamation-circle fa-2x" data-toggle="tooltip" title="" data-original-title="View all"></i>
+						</a>
+					</td>
+					<td>
+						<strong>Evaluación Proyecto MHHTDE</strong>
+						<div class="text-muted">Liberada hace 22 días</div>
+					</td>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="btn btn-default">
+						<i class="fa fa-comments"></i> 17
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="text-success">
+						<i class="fa fa-exclamation-circle fa-2x" data-toggle="tooltip" title="" data-original-title="View all"></i>
+						</a>
+					</td>
+					<td>
+						<strong>Evauación Mes de Febrero </strong>
+						<div class="text-muted">Liberada hace 30 días</div>
+					</td>
+					<td class="text-center" style="width: 60px;">
+						<a href="javascript:void(0)" class="btn btn-default">
+						<i class="fa fa-comments"></i> 15
+						</a>
+					</td>
+				</tr>
+				
+				</tbody>
+				</table>
+				<div class="text-center">
+				<ul class="pagination pagination-sm">
+				<li><a href="javascript:void(0)"><i class="fa fa-angle-left"></i></a></li>
+				<li class="active"><a href="javascript:void(0)">1</a></li>
+				<li><a href="javascript:void(0)">2</a></li>
+				<li><a href="javascript:void(0)">3</a></li>
+				<li><a href="javascript:void(0)">4</a></li>
+				<li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i></a></li>
+				</ul>
+				</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+		<!-- Large Modal1 -->
+        <div id="modal-agregar-persona" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                	<div  class="modal-header" style="background-color: #1ec1b8;">
+                		<h2> Agregar Personas</h2>
+                	</div>
+
+					<div id="modalBodyCreate" class="modal-body" style="overflow: hidden; width: auto;">
+						<div class="row">
+
+							<div class="col-md-8 center-block right-col-new">
+								<h4> <strong>Elegir o agregar</strong> clientes  <a class="btn btn-md btn-imannova-action pull-right"><i class="fa fa-plus"></i> Agregar nuevo</a></h4>
+
+								<ul class="chat-users clearfix">
+
+								<?php for ($i = 1; $i <= 11; $i++) { ?>
+										<li>
+										<a href="javascript:void(0)" class="chat-user-online" data-value="<?php echo $i; ?>">
+										<span style="color:#1ec1b8;"><i id="check-users<?php echo $i; ?>" class="hidden hi hi-ok"></i></span>
+										<img src="<?php print($this->url->get("img/avatars/avatar".$i.".jpg"))?>" alt="avatar" class="img-circle">
+										</a>
+										</li>
+								<?php } ?>
+								</ul>
+
+								<div class="form-group form-actions" style="margin-bottom: 102px;margin-top: 40px;">
+									<div class="col-md-4 ">
+										<button type="submit" class="btn btn-block btn-imannova-def"><i class="fa fa-ban"></i> cancelar</button>
+									</div>
+									<div class="col-md-8 ">
+										<button type="reset" class="btn btn-block btn-imannova"><i class="fa fa-check"></i> Guardar</button>
+									</div>
+								</div>
+							</div>							
+						</div>								
+					</div>
+                      
+               	 </div>
+            </div>
+        </div>
+
+        <!-- END Large Modal1 -->
+
+		<!-- Large Modal2 -->
+        <div id="modal-nueva-eval" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                	<div  class="modal-header" style="background-color: #1ec1b8;">
+                		<h2> Nueva Evaluación</h2>
+                	</div>
+
+					<div id="modalBodyCreate" class="modal-body" style="overflow: hidden; width: auto;">
+						<div class="row">
+							<div class="col-md-12  left-col-new form-modal">
+								<div class="form-group">
+										<span class="col-md-2">Nombre: </span>
+										<div class="col-md-8 center-block">
+											<input type="text" class="form-control" placeholder="Nombre de la evaluación"/>
+										</div>
+								</div>
+
+								<div class="form-group">
+									
+									<span class="col-md-2">Fecha inicio: </span>
+									<div class="col-md-8 center-block">
+									<input type="text" id="example-datepicker3" name="example-datepicker3" class="form-control input-datepicker" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-md-2 control-label">Periodicidad</label>
+
+									<div class="col-md-8 center-block">
+									<select id="example-select" name="example-select" class="form-control" size="1">
+		                                <option value="0">Seleccionar...</option>
+		                                <option value="1">Semanal</option>
+		                                <option value="2">Quincenal</option>
+		                                <option value="3">Mensual</option>
+		                                <option value="4">Trimestral</option>
+	                           		</select>
+	                           		</div>
+									
+								</div>
+
+								<div class="form-group form-actions">
+									<div class="col-md-4 ">
+										<button type="submit" class="btn btn-block btn-imannova-def"><i class="fa fa-ban"></i> cancelar</button>
+									</div>
+									<div class="col-md-8 ">
+										<button type="reset" class="btn btn-block btn-imannova"><i class="fa fa-check"></i> Guardar</button>
+									</div>
+								</div>
+
+							</div>								
+						</div>
+               		 </div>
+            	</div>
+        	</div>
+        </div>
+        <!-- END Large Modal2-->

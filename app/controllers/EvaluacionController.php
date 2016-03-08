@@ -10,10 +10,7 @@ class evaluacionController extends ControllerBase
     public function indexAction()
     {   
 
-        $menu = 'menu/topMenu';
-        $content = 'evaluacion/home';
-
-        echo $this->view->render('theme',array('topMenu'=>$menu,'menuSel'=>'configurar','pcView'=>$content,'pcData'=>''));
+        $this->perfilAction();
     }
 
     public function evaluacionAction()
@@ -148,6 +145,7 @@ class evaluacionController extends ControllerBase
                 height: 400,
                 colors: ['#1ec1b8'],
                 title: '',
+                chartArea: {width: '50%'},
               hAxis: {title: 'Mes',  titleTextStyle: {color: '#333'}},
               vAxis: {minValue: 0}
             };
@@ -168,9 +166,34 @@ class evaluacionController extends ControllerBase
         $menu = 'menu/topMenu';
         $content = 'evaluacion/configurar-grupos-evaluacion';
       
-
+        $jsScript = 
+        "
+                $(\".chat-user-online\").click(function(){
+                    var data = $(this).data('value');
+                    $(this).toggleClass('after-focus');
+                    $(\"#check-users\"+data).toggleClass('hidden');
+                });
+        ";
         
-        echo $this->view->render('theme',array('topMenu'=>$menu,'menuSel'=>'configurar','pcView'=>$content,'pcData'=>''));
+        echo $this->view->render('theme',array('topMenu'=>$menu,'menuSel'=>'configurar','pcView'=>$content,'pcData'=>'', 'jsScript' => $jsScript));
     }
+
+    public function gruposConfigurarAction() {
+        $menu = 'menu/topMenu';
+        $content = 'evaluacion/configurar-grupos-evaluacion-detalle';
+      
+        $jsScript = 
+        "
+                $(\".chat-user-online\").click(function(){
+                    var data = $(this).data('value');
+                    $(this).toggleClass('after-focus');
+                    $(\"#check-users\"+data).toggleClass('hidden');
+                });
+        ";
+        
+        echo $this->view->render('theme',array('topMenu'=>$menu,'menuSel'=>'configurar','pcView'=>$content,'pcData'=>'', 'jsScript' => $jsScript));
+
+     }
+
 
 }
