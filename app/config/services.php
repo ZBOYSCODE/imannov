@@ -14,6 +14,7 @@ use Phalcon\Flash\Direct as Flash;
 use Phalcon\Mvc\Collection\Manager;
 use Gabs\Auth\Auth;
 use Gabs\Mifaces\Mifaces;
+use Phalcon\Mvc\Model\Manager as modelsManager;
 //use Vokuro\Acl\Acl;
 use Gabs\Mail\Mail;
 
@@ -74,15 +75,21 @@ $di->set('db', function () use ($config) {
     ));
 });
 
+
+ $di->set('modelsManager', function() {
+      return new modelsManager();
+ });
+
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
- *
+ **/
 $di->set('modelsMetadata', function () use ($config) {
     return new MetaDataAdapter(array(
         'metaDataDir' => $config->application->cacheDir . 'metaData/'
     ));
 });
-/**
+
+/*
  * Start the session the first time some component request the session service
  */
 $di->set('session', function () {

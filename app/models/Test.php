@@ -6,7 +6,7 @@ use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Query;
 
 
-class Test extends Model
+class Test extends BaseModel
 {
     public $id;
 
@@ -19,9 +19,13 @@ class Test extends Model
 
     public function testing()
     {
-        $query = new Query("SELECT * FROM Test");
+        //$query = new Query("SELECT * FROM Test");
 
-        return $query->execute();
+        //return $query->execute();
+
+        $result=$this->db->query("SELECT * FROM Test"); // Working now
+        echo $result->numRows();
+        print_r($result->fetchAll());
     }
 
 }
