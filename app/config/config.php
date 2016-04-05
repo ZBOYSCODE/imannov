@@ -2,10 +2,10 @@
 return new \Phalcon\Config([
     'database' => [
         'adapter' => 'Mysql',
-        'host' => '127.0.0.1',
+        'host' => 'localhost',
         'username' => 'root',
         'password' => 'z3nta',
-        'dbname' => 'fw_auth'
+        'dbname' => 'imannova'
     ],
     'application' => [
         'controllersDir' => APP_DIR . '/controllers/',

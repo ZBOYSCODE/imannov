@@ -1,7 +1,7 @@
 <?php
 namespace Gabs\Controllers;
-use Gabs\Models\Personas;
- 
+use Gabs\Models\Test;
+
 class evaluacionController extends ControllerBase
 {
     /**
@@ -120,6 +120,11 @@ class evaluacionController extends ControllerBase
     }
 
     public function perfilAction() {
+        $model = new Test();
+
+        print_r($model->testing());
+        exit;
+
         $menu = 'menu/topMenu';
         $content = 'evaluacion/perfil';
         $jsScript = 
