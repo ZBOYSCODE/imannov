@@ -6,26 +6,34 @@ use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Query;
 
 
-class Test extends BaseModel
+class Test extends Model
 {
     public $id;
 
-    public $nombre;
-
     public function getSource()
     {
-        return 'test';
+        return 'Test';
     }
 
     public function testing()
     {
-        //$query = new Query("SELECT * FROM Test");
+       
 
-        //return $query->execute();
+        //forma 1 phql
+        $query = new Query("SELECT * FROM  Gabs\Models\Test", $this->getDI());
+        return $query->execute()[0]->id;
 
-        $result=$this->db->query("SELECT * FROM Test"); // Working now
+
+        //forma 2 phql
+        //$query = "SELECT * FROM  Gabs\Models\Test";
+        //$query = $this->modelsManager->createQuery($query);
+        //return $query->execute()[0]->id;
+
+
+        //forma 3 directa mysql, hay que extender baseModel.php
+        /*$result=$this->db->query("SELECT * FROM Test"); // Working now
         echo $result->numRows();
-        print_r($result->fetchAll());
+        print_r($result->fetchAll());*/
     }
 
 }
