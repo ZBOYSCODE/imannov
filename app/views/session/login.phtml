@@ -56,7 +56,7 @@
         <div id="login-container" class="animation-fadeIn">
             <!-- Login Title -->
             <div class="login-title text-center">
-                <h1><i class="fa fa-cogs"></i></i> <?php print($this->config->appName)?><br><small>Por favor <strong>Login</strong> o <strong>Regístrate</strong></small></h1>
+                <h1><i class="fa fa-cogs"></i></i> <?php print($this->config->appTitle)?><br><small>Por favor <strong> ingresa tus datos</strong> <strong></strong></small></h1>
             </div>
             <!-- END Login Title -->
 
@@ -86,13 +86,13 @@
                     </div>
                     <div class="form-group form-actions">
                         <div class="col-xs-4">
-                            <label class="switch switch-primary" data-toggle="tooltip" title="Remember Me?">
+                            <label class="switch switch-primary" data-toggle="tooltip" title="Recordar datos?">
 								<?php echo $form->render("remember"); ?>
                                 <span></span>
                             </label>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Login </button>
+                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Entrar </button>
                         </div>
                     </div>
                     <!--
@@ -179,7 +179,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 text-center">
-                            <small>¿Tienes una cuenta?</small> <a href="javascript:void(0)" id="link-register"><small>Login</small></a>
+                            <small>¿Tienes una cuenta?</small> <a href="javascript:void(0)" id="link-register"><small>Entrar</small></a>
                         </div>
                     </div>
                 </form>
@@ -190,10 +190,10 @@
             <!-- Footer -->
             <footer class="clearfix">
                 <div class="pull-right">
-                    Con <i class="fa fa-heart text-danger"></i> by <a href="<?php print($this->config->appAutorLink)?>" target="_blank"><?php print($this->config->appAutor)?></a>
+                   <a href="<?php print($this->config->appAutorLink)?>"> <?php print($this->config->appTitle)?></a>
                 </div>
                 <div class="pull-left">
-                    <span id="year-copy"></span> &copy; <a href="<?php print($this->config->appAutorLink)?>" target="<?php print($this->config->appAutor)?>"><?php print($this->config->appAutor)?></a>
+                    2016 &copy; <a href="http://www.zentagroup.com" target="<?php print($this->config->appAutor)?>">Zenta Solutions</a>
                 </div>
             </footer>
             <!-- END Footer -->

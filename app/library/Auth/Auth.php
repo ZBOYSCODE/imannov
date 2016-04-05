@@ -56,7 +56,6 @@ class Auth extends Component
         $this->session->set('auth-identity', array(
             'id' => $user->id,
             'name' => $user->name,
-            'profile' => json_decode(json_encode(Personas::findById($user->profilesId)),TRUE)
         ));
 
     }

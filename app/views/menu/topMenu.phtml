@@ -21,27 +21,17 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="<?php print($menuSel == "perfil"? 'active':'');?>"><a href="<?php print($this->url->get('perfil')) ?>"><i class="gi gi-user"></i>  Mi Perfil</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="gi gi-user"></i><b> Login</b> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="gi gi-user"></i><b> <?php print(utf8_encode($this->auth->getIdentity()['name']))?></b> <span class="caret"></span></a>
             <ul id="login-dp" class="dropdown-menu">
                 <li>
                      <div class="row">
-                            <div class="col-md-12">
-                                <!-- Login -->
-                                <div class="social-buttons">
-                                    <div class="iconSpecial"><i class="gi gi-unlock"></i> Login</div>
-                                </div>                               
-                                 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                        <div class="form-group">
-                                             <label class="sr-only" for="exampleInputEmail2">Correo</label>
-                                             <input type="email" class="form-control" id="exampleInputEmail2" placeholder="usuario" required>
-                                        </div>
-                                        <div class="form-group">
-                                             <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
-                                             <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Contraseña" required>
-                                        </div>
-                                        <div class="form-group">
-                                             <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-                                        </div>
+                            <div class="col-md-12">1
+                                      <div class="form-group">
+                                          <a href="<?php print($this->url->get('')) ?>" class="btn btn-imannova btn-block"><i class="hi hi-cog"></i> Editar Datos</a>
+                                      </div>
+                                      <div class="form-group">
+                                           <a href="<?php print($this->url->get('logout')) ?>" class="btn btn-imannova btn-block"><i class="gi gi-log_out"></i> Salir</a>
+                                      </div>
                                  </form>
                             </div>                      
                      </div>

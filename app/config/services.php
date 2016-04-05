@@ -64,7 +64,7 @@ $di->set('collectionManager', function(){
 /**
  * Database connection is created based in the parameters defined in the configuration file
  */
- /*
+ 
 $di->set('db', function () use ($config) {
     return new DbAdapter(array(
         'host' => $config->database->host,
@@ -73,7 +73,7 @@ $di->set('db', function () use ($config) {
         'dbname' => $config->database->dbname
     ));
 });
-*/
+
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  *
