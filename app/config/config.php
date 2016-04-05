@@ -35,9 +35,9 @@ return new \Phalcon\Config([
         'AWSSecretKey' => ''
     ],
 	'noAuth' => //noAuth -> configuracion de controller y acciones que no tienen que pasar por la autentificacion
-	array('session'=>array('login'=>true,'logout'=>true/*,'*'=>true*/)//
-	/*,'otro'=>array('login'=>true)*/,'evaluacion'=>array('*'=>true)//
-	/*,'otro'=>array('login'=>true)*/),
+	array('session'=>array('login'=>true,'logout'=>true),
+          'evaluacion'=>array('*'=>true),
+          'ajax'=>array('*'=>true)),
 	'appTitle'=>'Imannova Evaluación',
 	'appName'=>"<strong>Iman</strong>nova",
 	'appAutor'=>'Imannova',
