@@ -5,13 +5,14 @@
     height: 27px;
 }
 .navbar-inverse {
-    background: #4D5061;
+    /*background: #4D5061;*/
+    background: white;
     border-bottom: 4px solid #037E8C;
     color: #FFF;
 }
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
     text-shadow: none;
-    color: #FFF;
+    color: #037E8C;
 }
 .navbar-inverse .navbar-nav>.active>a,
 .navbar-inverse .navbar-nav>.open>a,

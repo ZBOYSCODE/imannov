@@ -122,8 +122,8 @@ class evaluacionController extends ControllerBase
     public function perfilAction() {
         $model = new Test();
 
-        print_r($model->testing());
-        exit;
+        //print_r($model->testing());
+
 
         $menu = 'menu/topMenu';
         $content = 'evaluacion/perfil';
