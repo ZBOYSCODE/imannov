@@ -6,13 +6,15 @@ use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Query;
 
 
-class Test extends Model
+class Grupo extends Model
 {
-    public $id;
+    public $grpo_id;
+
+    public $grpo_nombre;
 
     public function getSource()
     {
-        return 'Test';
+        return 'grupo';
     }
 
     public function testing()
@@ -20,8 +22,8 @@ class Test extends Model
        
 
         //forma 1 phql
-        $query = new Query("SELECT * FROM  Gabs\Models\Test", $this->getDI());
-        return $query->execute()[0]->id;
+        $query = new Query("SELECT * FROM  Gabs\Models\Grupo", $this->getDI());
+        return $query->execute();
 
 
         //forma 2 phql
@@ -34,6 +36,12 @@ class Test extends Model
         /*$result=$this->db->query("SELECT * FROM Test"); // Working now
         echo $result->numRows();
         print_r($result->fetchAll());*/
+    }
+
+    public function getAll()
+    {
+        $query = new Query("SELECT * FROM  Gabs\Models\Grupo", $this->getDI());
+        return $query->execute();        
     }
 
 }

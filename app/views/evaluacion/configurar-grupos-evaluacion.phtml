@@ -31,57 +31,20 @@
 							</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><a href="<?php print($this->url->get('grupos/configurar')) ?>">Grupo de Soporte</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">10</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">5</a></td>
-									<td class="text-center">
-									<div class="btn-group btn-group-xs">
-									<a href="<?php print($this->url->get('grupos/configurar')) ?>" data-toggle="tooltip" title="" class="btn btn-block btn-imannova" data-original-title="Configurar Grupo"><i class="gi gi-cogwheel"></i> Configurar grupo</a>
-									</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a href="<?php print($this->url->get('grupos/configurar')) ?>">Grupo de Gerencia</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">4</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">2</a></td>
-									<td class="text-center">
-									<div class="btn-group btn-group-xs">
-									<a href="<?php print($this->url->get('grupos/configurar')) ?>" data-toggle="tooltip" title="" class="btn btn-block btn-imannova" data-original-title="Configurar Grupo"><i class="gi gi-cogwheel"></i> Configurar grupo</a>
-									</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a href="<?php print($this->url->get('grupos/configurar')) ?>">Grupo de Desarrollo</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">25</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">34</a></td>
-									<td class="text-center">
-									<div class="btn-group btn-group-xs">
-									<a href="<?php print($this->url->get('grupos/configurar')) ?>" data-toggle="tooltip" title="" class="btn btn-block btn-imannova" data-original-title="Configurar Grupo"><i class="gi gi-cogwheel"></i> Configurar grupo</a>
-									</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a href="<?php print($this->url->get('grupos/configurar')) ?>">Grupo de Planificacion</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">4</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">7</a></td>
-									<td class="text-center">
-									<div class="btn-group btn-group-xs">
-									<a href="<?php print($this->url->get('grupos/configurar')) ?>" data-toggle="tooltip" title="" class="btn btn-block btn-imannova" data-original-title="Configurar Grupo"><i class="gi gi-cogwheel"></i> Configurar grupo</a>
-									</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a href="<?php print($this->url->get('grupos/configurar')) ?>">Grupo de RRHH</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">4</a></td>
-									<td><a href="javascript:void(0)" class="label label-default">11</a></td>
-									<td class="text-center">
-									<div class="btn-group btn-group-xs">
-									<a href="<?php print($this->url->get('grupos/configurar')) ?>" data-toggle="tooltip" title="" class="btn btn-block btn-imannova" data-original-title="Configurar Grupo"><i class="gi gi-cogwheel"></i> Configurar grupo</a>
-									</div>
-									</td>
-								</tr>
-							
+								<?php foreach ($pcData['grupos'] as $key => $grupo): ?>
+									<tr>
+										<td><a href="<?php print($this->url->get('grupos/configurar')) ?>"><?php print($grupo->grpo_nombre) ?></a></td>
+										<td><a href="javascript:void(0)" class="label label-default">10</a></td>
+										<td><a href="javascript:void(0)" class="label label-default">5</a></td>
+										<td class="text-center">
+										<div class="btn-group btn-group-xs">
+										<a href="<?php print($this->url->get('grupos/configurar')) ?>" data-toggle="tooltip" title="" class="btn btn-block btn-imannova" data-original-title="Configurar Grupo"><i class="gi gi-cogwheel"></i> Configurar grupo</a>
+										</div>
+										</td>
+									</tr>									
+								<?php endforeach ?>
+
+
 							</tbody>
 							</table>
 						</div>

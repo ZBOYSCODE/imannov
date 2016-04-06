@@ -1,6 +1,7 @@
 <?php
 namespace Gabs\Controllers;
 use Gabs\Models\Personas;
+use Gabs\Models\Enunciado;
  
 class AjaxController extends ControllerBase
 {
@@ -41,4 +42,18 @@ class AjaxController extends ControllerBase
              }
        }
     }	
+
+    public function cargarEncuestaAction()
+    {
+    	$modelEnunciado = new Enunciado();
+
+    	$enunciados = array();
+    	$idsHabilidades = explode(',', $_POST['ids']);
+    	foreach ($idsHabilidades as $id) {
+    		foreach ($modelEnunciado->getByHabilidad($id) as $enunciado) {
+    			array_push($enunciados, $enunciado);
+    		}
+    		
+    	}
+    }
 }
