@@ -1,0 +1,106 @@
+            <?php $tipos_periodicidad = array('dias','meses','semestres') ?>
+
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                	<div  class="modal-header modal-formularios">
+                		<h2> Creador de Grupo </h2>
+                	</div>
+					<form action="<?php print isset($grupo)?$this->url->get('ajax/editarGrupo'):$this->url->get('ajax/guardarGrupo') ?>" data-type="ajax">
+					<div id="modalBodyCreate" class="modal-body" style="overflow: hidden; width: auto;">
+						<div class="row">
+							<div class="col-md-6 left-col-new form-modal">
+								  <div class="form-group">
+										<div class="col-md-11 center-block">
+											<input name="nombre" type="text" class="form-control" value="<?php print isset($grupo)?$grupo->grpo_nombre:'' ?>" placeholder="Nombre del grupo..."/>
+										</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="col-md-11 center-block">
+									<textarea id="example-textarea-input" name="descripcion" rows="9" class="form-control" placeholder="Descripción..."><?php print isset($grupo)?$grupo->grpo_descripcion:'' ?></textarea>
+									</div>
+								</div>
+
+								
+									<div class="col-md-11 center-block" style="padding-bottom: 15px;">
+									<div class="row"> 
+										<div class="form-group">
+											<h5 class="col-xs-4"> Periodicidad </h5>
+											<div class="col-xs-4">
+												<input name="cantidadPeriodicidad" type="number" class="form-control" placeholder="" value="<?php print isset($grupo)?$grupo->grpo_cantidad_periodicidad:'' ?>"/>
+											</div>
+											<div class="col-xs-4">
+												<select name="tipoPeriodicidad" class="form-control select-chosen" data-placeholder="Seleccione urgencia">
+													<?php if (isset($grupo)): ?>
+														<option value="<?php print($grupo->grpo_tipo_periodicidad) ?>" selected="selected"><?php print($tipos_periodicidad[$grupo->grpo_tipo_periodicidad]) ?></option>								
+													<?php else: ?>	
+														<option value="" selected="selected"></option>							
+													<?php endif ?>
+
+													<option value="1">Dias</option>
+													<option value="2">Meses</option>
+													<option value="3">Semestres</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<input type="hidden" id="id" name="id" value="<?php print isset($grupo)?$grupo->grpo_id:'' ?>">
+								<input id="personas" name="personas" type="hidden" value="">
+
+								<div class="form-group form-actions">
+									<div class="col-md-4 ">
+										<button type="submit" class="btn btn-block btn-imannova-def" data-dismiss="modal"><i class="fa fa-ban"></i> cancelar</button>
+									</div>
+									<div class="col-md-8 ">
+										<button id="btnGuardar" type="submit" class="btn btn-block btn-imannova"><i class="fa fa-check"></i> Guardar</button>
+									</div>
+								</div>
+
+							 </div>
+
+							<div class="col-md-6 right-col-new">
+								<h4> <strong>Elegir o agregar</strong> personas  <a class="btn btn-md btn-imannova-action pull-right"><i class="fa fa-plus"></i> Agregar nueva persona</a></h4>
+
+								<br><br>
+
+								<h5>¿Quién estará en este grupo?</h5>
+
+								<ul class="chat-users clearfix">
+
+								<?php foreach($users as $user): ?>
+										<li>
+										<a href="javascript:void(0)" id="chat-user<?php print($user->id) ?>" class="chat-user-online themed-color-night" data-value="<?php echo $user->id; ?>"
+										style="text-decoration:none;">
+										<span style="color:#1ec1b8;"><i id="check-users<?php echo $user->id; ?>" class="hidden hi hi-ok"></i></span>
+										<img src="<?php print($this->url->get("img/avatars/avatar".$user->id.".jpg"))?>" alt="avatar" class="img-circle">
+										<?php print($user->name) ?>
+										</a>
+										</li>
+								<?php endforeach ?>
+								</ul>
+							</div>							
+						</div>								
+					</div>
+					</form>
+                      
+               	 </div>
+            </div>
+
+
+            <script>
+                $(".chat-user-online").click(function(){
+                    var data = $(this).data('value');
+                    $(this).toggleClass('after-focus');
+                    $("#check-users"+data).toggleClass('hidden');
+                });            	
+
+                $('#btnGuardar').click(function() {
+                	var array = $('.after-focus').map(function(index, elem) {
+                		return $(this).data('value');
+                	});
+					$('#personas').val(array.toArray());
+                });
+
+            </script>

@@ -44,4 +44,17 @@ class Grupo extends Model
         return $query->execute();        
     }
 
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            "grpo_id",
+            "Gabs\Model\UserGrupo",
+            "grpo_id",
+            "user_id",
+            "Gabs\Model\Users",
+            "id",
+            array('alias' => 'users')
+        );
+    }    
+
 }

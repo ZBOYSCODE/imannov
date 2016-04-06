@@ -2,6 +2,7 @@
 namespace Gabs\Controllers;
 use Gabs\Models\Grupo;
 use Gabs\Models\Habilidad;
+use Gabs\Models\Users;
 
 class evaluacionController extends ControllerBase
 {
@@ -103,6 +104,14 @@ class evaluacionController extends ControllerBase
                 var arr = $('.bizmoduleselect>label.active').find('input').map(function(){return $(this).val();}).get();
                 $('#btnResponder').data('val','ids='+arr);
             });
+
+            $(\".chat-user-online\").click(function(){
+                $(\".chat-user-online\").removeClass('after-focus');
+                var data = $(this).data('value');
+                $(this).toggleClass('after-focus');
+                $('#evaluado').html($(this).data('name'));
+                $('#imagenEvaluado').attr('src','/imannova/img/avatars/avatar'+data+'.jpg');
+            });            
 
             
         ";
@@ -211,15 +220,13 @@ class evaluacionController extends ControllerBase
 
     public function gruposEvaluacionAction() {
 
-
         $modelGrupo = new Grupo();
 
         $pcData['grupos'] = $modelGrupo->getAll();
 
-
         $menu = 'menu/topMenu';
         $content = 'evaluacion/configurar-grupos-evaluacion';
-      
+
         $jsScript = 
         "
                 $(\".chat-user-online\").click(function(){

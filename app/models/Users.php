@@ -158,5 +158,15 @@ class Users extends Model
                 'message' => 'User cannot be deleted because he/she has activity in the system'
             )
         ));
+
+        $this->hasManyToMany(
+            "id",
+            "Gabs\Model\UserGrupo",
+            "user_id",
+            "grpo_id",
+            "Gabs\Model\Grupo",
+            "grpo_id",
+            array('alias' => 'grupos')
+        );
     }
 }

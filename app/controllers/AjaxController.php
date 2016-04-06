@@ -3,6 +3,9 @@ namespace Gabs\Controllers;
 use Gabs\Models\Personas;
 use Gabs\Models\Enunciado;
 use Gabs\Models\Habilidad;
+use Gabs\Models\Users;
+use Gabs\Models\Grupo;
+use Gabs\Models\UserGrupo;
  
 class AjaxController extends ControllerBase
 {
@@ -76,4 +79,123 @@ class AjaxController extends ControllerBase
 		$this->mifaces->addPosRendEval('$("#modal-encuesta").modal();');
 		$this->mifaces->run();
     }
+
+    public function cargarCrearGrupoAction()
+    {
+
+        $modelUser = new Users();
+
+        $users = array();
+
+        for ($i=6; $i <11 ; $i++) { 
+            array_push($users, $modelUser::findFirst($i));
+        }
+
+        $dataView['users'] = $users;
+
+    	$this->mifaces->newFaces();
+		$toRend=$this->view->render('evaluacion/modal-configurar-grupos',$dataView);
+		$this->mifaces->addToRend('modal-nuevo-grupo', $toRend);
+		$this->mifaces->addPosRendEval('$("#modal-nuevo-grupo").modal();');
+		$this->mifaces->run();    	
+    }
+
+    public function cargarEditarGrupoAction()
+    {
+
+        $modelUser = new Users();
+        $modelGrupo = new Grupo();
+        $modelUserGrupo = new UserGrupo();
+
+        $users = array();
+
+        for ($i=6; $i <11 ; $i++) { 
+            array_push($users, $modelUser::findFirst($i));
+        }
+
+        $dataView['users'] = $users;
+
+        $dataView['grupo'] = $modelGrupo::findFirst($_POST['id']);
+
+        $userGrupos = $modelUserGrupo->getByGrupo($dataView['grupo']->grpo_id);
+
+        $users = array();
+
+        foreach ($userGrupos as $userGrupo) {
+        	array_push($users, $userGrupo->user_id);
+        }
+
+        $str = '';
+
+        foreach ($users as $user_id) {
+        	$str = $str."$(\"#check-users".$user_id."\").toggleClass('hidden'); 
+        				 $(\"#chat-user".$user_id."\").addClass('after-focus');";
+        }
+
+
+    	$this->mifaces->newFaces();
+		$toRend=$this->view->render('evaluacion/modal-configurar-grupos',$dataView);
+		$this->mifaces->addToRend('modal-nuevo-grupo', $toRend);
+		$this->mifaces->addPosRendEval('$("#modal-nuevo-grupo").modal();'.$str);
+		$this->mifaces->run();    	
+    }    
+
+    public function guardarGrupoAction()
+    {
+    	$modelGrupo = new Grupo();
+    	
+    	$modelGrupo->grpo_nombre = $_POST['nombre'];
+    	$modelGrupo->grpo_descripcion = $_POST['descripcion'];
+    	$modelGrupo->grpo_tipo_periodicidad = $_POST['tipoPeriodicidad'];
+    	$modelGrupo->grpo_cantidad_periodicidad = $_POST['cantidadPeriodicidad'];
+    	$modelGrupo->save();
+    	$users = explode(',', $_POST['personas']);
+    	$modelGrupo->grpo_id;
+    	foreach ($users as $user_id) {
+    		$modelUserGrupo = new UserGrupo();
+    		$modelUserGrupo->user_id = $user_id;
+    		$modelUserGrupo->grpo_id = $modelGrupo->grpo_id;
+    		$modelUserGrupo->save();
+    	}
+
+    	$modelGrupo = new Grupo();
+    	$dataView['grupos'] = $modelGrupo->getAll();
+
+    	$this->mifaces->newFaces();
+		$toRend=$this->view->render('evaluacion/configurar-grupos-lista',$dataView);
+		$this->mifaces->addToRend('listaGrupos', $toRend);
+    	$this->mifaces->addPosRendEval("$('#modal-nuevo-grupo').modal('toggle');
+    									$.bootstrapGrowl('Grupo Creado Correctamente',{type:'success'});");
+    	$this->mifaces->run();
+    }
+
+    public function editarGrupoAction()
+    {
+    	$modelGrupo = new Grupo();
+    	
+    	$modelGrupo->grpo_id = $_POST['id'];
+    	$modelGrupo->grpo_nombre = $_POST['nombre'];
+    	$modelGrupo->grpo_descripcion = $_POST['descripcion'];
+    	$modelGrupo->grpo_tipo_periodicidad = $_POST['tipoPeriodicidad'];
+    	$modelGrupo->grpo_cantidad_periodicidad = $_POST['cantidadPeriodicidad'];
+    	$modelGrupo->update();
+    	$users = explode(',', $_POST['personas']);
+    	$modelGrupo->grpo_id;
+    	foreach ($users as $user_id) {
+    		$modelUserGrupo = new UserGrupo();
+    		$modelUserGrupo->user_id = $user_id;
+    		$modelUserGrupo->grpo_id = $modelGrupo->grpo_id;
+    		$modelUserGrupo->update();
+    	}
+
+    	$modelGrupo = new Grupo();
+    	$dataView['grupos'] = $modelGrupo->getAll();
+
+    	$this->mifaces->newFaces();
+		$toRend=$this->view->render('evaluacion/configurar-grupos-lista',$dataView);
+		$this->mifaces->addToRend('listaGrupos', $toRend);
+    	$this->mifaces->addPosRendEval("$('#modal-nuevo-grupo').modal('toggle');
+    									$.bootstrapGrowl('Grupo Editado Correctamente',{type:'success'});");
+    	$this->mifaces->run();
+    }    
 }

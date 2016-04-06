@@ -1,5 +1,34 @@
 <div class="container">
 
+	<?php $nombres = array('','Felipe Jorquera','Adrián Bustos','Julio Cortés','Fabián Gonzáles') ?>
+
+
+	<div class="left-col-new" style="text-align: center; min-height: 100px; margin-bottom: 10px;">
+
+			<div class="row center-block">
+				<h3>Pendientes</h3>
+				<div class="list-group-item inactive" style="height:auto;">
+					<ul class="chat-users clearfix">
+								<li>
+								<a href="javascript:void(0)" class="chat-user-online" data-value="1" style="text-decoration: none; color: gray;" data-name="<?php print($nombres[1]) ?>">
+								<span style="color:#1ec1b8;"><i id="check-users<?php echo $i; ?>" class="hidden hi hi-ok"></i></span>
+								<img src="<?php print($this->url->get("img/avatars/avatar1.jpg"))?>" alt="avatar" class="img-circle">
+								<?php print($nombres[1]) ?>
+								</a>
+								</li>					
+						<?php for ($i = 2; $i <= 4; $i++) { ?>
+								<li>
+								<a href="javascript:void(0)" class="chat-user-online" data-value="<?php echo $i; ?>" style="text-decoration: none; color: gray;" data-name="<?php print($nombres[$i]) ?>">
+								<span style="color:#1ec1b8;"><i id="check-users<?php echo $i; ?>" class="hidden hi hi-ok"></i></span>
+								<img src="<?php print($this->url->get("img/avatars/avatar".$i.".jpg"))?>" alt="avatar" class="img-circle">
+								<?php print($nombres[$i]) ?>
+								</a>
+								</li>
+						<?php } ?>
+					</ul>
+				</div>
+			</div>
+		</div>		
 
 		<div class="left-col-new" style="text-align: center; min-height: 100px;">
 
@@ -7,17 +36,17 @@
 			<div class="col-lg-4">
 				<div class="profile-header-container">   
 		    		<div class="profile-header-img">
-		                <img class="img-circle" src="<?php print($this->url->get("img/avatars/avatar4.jpg"))?>" />
+		                <img id="imagenEvaluado" class="img-circle" src="<?php print($this->url->get("img/avatars/avatar1.jpg"))?>" />
 		                <!-- badge -->
 		                <div class="rank-label-container">
-		                    <span class="label label-default rank-label">Equipo de Soporte</span>
+		                    <span class="label label-default rank-label">Equipo de Desarrollo - Informática</span>
 		                </div>
 		            </div>
 		        </div> 
 	        </div>
 	        <div class="col-lg-4">
 	        <h2> Responder Evaluación</h2>
-	        <h3> Evaluando a: <strong> Felipe Jorquera A. </strong> </h3>
+	        <h3> Evaluando a: <strong> <div id="evaluado"><?php print($nombres[1]) ?></div> </strong> </h3>
 	        </div>
 			</div>
 		</div>

@@ -1,0 +1,36 @@
+		            <div class="block">
+						<div class="block-title">
+						<h2><strong>Grupos de </strong> Evaluación</h2>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-vcenter table-striped">
+							<thead>
+							<tr>
+							<th>Nombre Grupo</th>
+							<th>Nº Integrantes</th>
+							<th>Nº Encuestas </th>
+							<th style="width: 150px;" class="text-center">Acciones</th>
+							</tr>
+							</thead>
+							<tbody>
+								<?php foreach ($grupos as $key => $grupo): ?>
+									<tr>
+										<td><a href="<?php print($this->url->get('grupos/configurar')) ?>"><?php print($grupo->grpo_nombre) ?></a></td>
+										<td><a href="javascript:void(0)" class="label label-default">10</a></td>
+										<td><a href="javascript:void(0)" class="label label-default">5</a></td>
+										<td class="text-center">
+										<div class="btn-group btn-group-xs">
+										<a href="<?php print($this->url->get('ajax/cargarEditarGrupo')) ?>" 
+										   data-action="<?php print($this->url->get('ajax/cargarEditarGrupo')) ?>"
+										   data-val="id=<?php print($grupo->grpo_id) ?>"
+										    data-toggle="tooltip" title="" class="btn btn-block btn-imannova" data-original-title="Configurar Grupo"><i class="gi gi-cogwheel"></i> Configurar grupo</a>
+										</div>
+										</td>
+									</tr>									
+								<?php endforeach ?>
+
+
+							</tbody>
+							</table>
+						</div>
+					</div>

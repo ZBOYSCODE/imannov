@@ -3,7 +3,10 @@
 	<div class="col-lg-12 bhoechie-tab-container">
 		<div class="col-lg-3 col-md-3 col-sm-5 bhoechie-tab-menu">
 			<div class="list-group bg-color-primary  ">
-				<a href="#modal-nuevo-grupo" data-toggle="modal" class="menu-config-grupo list-group-item bg-primary text-center ">
+				<a href="<?php echo $this->url->get("ajax/cargarCrearGrupo") ?>" 
+				   data-action="<?php echo $this->url->get("ajax/cargarCrearGrupo") ?>"
+				   data-eval=""
+				   class="menu-config-grupo list-group-item bg-primary text-center ">
 				<i class="fa fa-plus fa-3x "></i><br/>Nuevo Grupo de Evaluación
 				</a>
 				<div class="list-group-item inactive" style="height:200px;">
@@ -15,40 +18,10 @@
 		    <!-- flight section -->
 		    <div class="bhoechie-tab-content fade in active">
 		        <center>
-		            
-		            <div class="block">
-						<div class="block-title">
-						<h2><strong>Grupos de </strong> Evaluación</h2>
-						</div>
-						<div class="table-responsive">
-							<table class="table table-vcenter table-striped">
-							<thead>
-							<tr>
-							<th>Nombre Grupo</th>
-							<th>Nº Integrantes</th>
-							<th>Nº Encuestas </th>
-							<th style="width: 150px;" class="text-center">Acciones</th>
-							</tr>
-							</thead>
-							<tbody>
-								<?php foreach ($pcData['grupos'] as $key => $grupo): ?>
-									<tr>
-										<td><a href="<?php print($this->url->get('grupos/configurar')) ?>"><?php print($grupo->grpo_nombre) ?></a></td>
-										<td><a href="javascript:void(0)" class="label label-default">10</a></td>
-										<td><a href="javascript:void(0)" class="label label-default">5</a></td>
-										<td class="text-center">
-										<div class="btn-group btn-group-xs">
-										<a href="<?php print($this->url->get('grupos/configurar')) ?>" data-toggle="tooltip" title="" class="btn btn-block btn-imannova" data-original-title="Configurar Grupo"><i class="gi gi-cogwheel"></i> Configurar grupo</a>
-										</div>
-										</td>
-									</tr>									
-								<?php endforeach ?>
+		            <div id="listaGrupos">
+		            	<?php print($this->view->render('evaluacion/configurar-grupos-lista',$pcData));?>
+		            </div>
 
-
-							</tbody>
-							</table>
-						</div>
-					</div>
 		        </center>
 		    </div>
 		</div>
@@ -58,83 +31,6 @@
 
         <!-- Large Modal -->
         <div id="modal-nuevo-grupo" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                	<div  class="modal-header modal-formularios">
-                		<h2> Creador de Grupo </h2>
-                	</div>
-
-					<div id="modalBodyCreate" class="modal-body" style="overflow: hidden; width: auto;">
-						<div class="row">
-							<div class="col-md-6 left-col-new form-modal">
-								  <div class="form-group">
-										<div class="col-md-11 center-block">
-											<input type="text" class="form-control" placeholder="Nombre del grupo..."/>
-										</div>
-								</div>
-
-
-								<div class="form-group">
-									<div class="col-md-11 center-block">
-									<textarea id="example-textarea-input" name="example-textarea-input" rows="9" class="form-control" placeholder="Descripción..."></textarea>
-									</div>
-								</div>
-
-								
-									<div class="col-md-11 center-block" style="padding-bottom: 15px;">
-									<div class="row"> 
-										<div class="form-group">
-											<h5 class="col-xs-4"> periodicidad </h5>
-											<div class="col-xs-4">
-												<input type="number" class="form-control" placeholder=""/>
-											</div>
-											<div class="col-xs-4">
-												<select name="tipoTurno" class="form-control select-chosen" data-placeholder="Seleccione urgencia">
-													<option value="" selected="selected"></option>
-													<option value="1">Dias</option>
-													<option value="2">Meses</option>
-													<option value="3">Semestres</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="form-group form-actions">
-									<div class="col-md-4 ">
-										<button type="submit" class="btn btn-block btn-imannova-def" data-dismiss="modal"><i class="fa fa-ban"></i> cancelar</button>
-									</div>
-									<div class="col-md-8 ">
-										<button type="reset" class="btn btn-block btn-imannova"><i class="fa fa-check"></i> Guardar</button>
-									</div>
-								</div>
-
-							 </div>
-
-							<div class="col-md-6 right-col-new">
-								<h4> <strong>Elegir o agregar</strong> personas  <a class="btn btn-md btn-imannova-action pull-right"><i class="fa fa-plus"></i> Agregar nueva persona</a></h4>
-
-								<br><br>
-
-								<h5>¿Quién estará en este grupo?</h5>
-
-								<ul class="chat-users clearfix">
-
-								<?php for ($i = 1; $i <= 11; $i++) { ?>
-										<li>
-										<a href="javascript:void(0)" class="chat-user-online" data-value="<?php echo $i; ?>">
-										<span style="color:#1ec1b8;"><i id="check-users<?php echo $i; ?>" class="hidden hi hi-ok"></i></span>
-										<img src="<?php print($this->url->get("img/avatars/avatar".$i.".jpg"))?>" alt="avatar" class="img-circle">
-										</a>
-										</li>
-								<?php } ?>
-								</ul>
-							</div>							
-						</div>								
-					</div>
-                      
-               	 </div>
-            </div>
         </div>
 
         <!-- END Large Modal -->
