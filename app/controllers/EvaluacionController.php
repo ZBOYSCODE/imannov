@@ -131,7 +131,6 @@ class evaluacionController extends ControllerBase
     }
 
     public function perfilAction() {
-
         $modelGrupo = new Grupo();
         $pcData['grupo'] = $modelGrupo->getAll()[0];
 

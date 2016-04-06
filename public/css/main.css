@@ -1159,6 +1159,12 @@ a.sidebar-title:focus {
 
 .widget-simple {
     padding: 15px;
+    background-color: #1ec1b8;
+}
+
+.widget-simple:hover {
+    padding: 15px;
+    background-color: #16928B;
 }
 
 .widget-simple:before,
@@ -1979,7 +1985,7 @@ a[data-toggle="lightbox-image"]:hover img {
 }
 
 .navbar.navbar-inverse {
-    background-color: #024959;
+    background-color: white;
 }
 
 .navbar-fixed-top,
