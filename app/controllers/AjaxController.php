@@ -2,6 +2,7 @@
 namespace Gabs\Controllers;
 use Gabs\Models\Personas;
 use Gabs\Models\Enunciado;
+use Gabs\Models\Habilidad;
  
 class AjaxController extends ControllerBase
 {
@@ -46,14 +47,33 @@ class AjaxController extends ControllerBase
     public function cargarEncuestaAction()
     {
     	$modelEnunciado = new Enunciado();
+    	$modelHabilidad = new Habilidad();
 
     	$enunciados = array();
+    	$habilidades = array();
+
     	$idsHabilidades = explode(',', $_POST['ids']);
+    	foreach ($idsHabilidades as $id) {
+    		array_push($habilidades, $modelHabilidad::findFirst($id));
+    	}
+
     	foreach ($idsHabilidades as $id) {
     		foreach ($modelEnunciado->getByHabilidad($id) as $enunciado) {
     			array_push($enunciados, $enunciado);
     		}
-    		
     	}
+
+
+
+    	$dataView['enunciados'] = $enunciados;
+    	$dataView['habilidades'] = $habilidades;
+    	$dataView['jsScript'] = "$('#contador').val(parseInt($('#contador').val())+1);
+    	 $('#barra-progreso').css('width',100*parseInt($('#contador').val())/".count($enunciados)."+'%');";
+
+    	$this->mifaces->newFaces();
+		$toRend=$this->view->render('evaluacion/encuesta',$dataView);
+		$this->mifaces->addToRend('modal-encuesta', $toRend);
+		$this->mifaces->addPosRendEval('$("#modal-encuesta").modal();');
+		$this->mifaces->run();
     }
 }

@@ -41,33 +41,6 @@ class evaluacionController extends ControllerBase
                 }
             );
 
-            $('.stp-trat-btn').click(
-                function(){
-
-                    $('#stp-trat-'+$(this).data('stp')+' .stp-trat-btn').removeClass('active');
-                    $(this).addClass('active');
-
-                    $('.stp-trat').css('display','none');
-                    
-                    $('#stp-trat-'+$(this).data('next')).css('display','block');                
-                    
-                    if($(this).data('type')=='pregunta1'){
-                        $('#barra-progreso').css('width','33%');
-                    }
-
-                    if($(this).data('type')=='pregunta2'){
-                        $('#barra-progreso').css('width','66%');
-                        $('#barra-progreso').removeClass('progress-bar-danger');
-                        $('#barra-progreso').addClass('progress-bar-warning');
-                    }
-
-                    if($(this).data('type')=='pregunta3'){
-                        $('#barra-progreso').css('width','100%');
-                        $('#barra-progreso').removeClass('progress-bar-warning');
-                        $('#barra-progreso').addClass('progress-bar-success');
-                    }
-                }
-            );
 
             $('.stp-trat-btn-menu').click(
                 function(){
@@ -106,13 +79,23 @@ class evaluacionController extends ControllerBase
                     var count = -1;
                 else
                     var count = 1;
+
+                if($('.bizmoduleselect>label.active').length + count > 0)
+                    $('#btnResponder').removeAttr('disabled');
+                else
+                    $('#btnResponder').attr('disabled','disabled');
+                
+
                 if($('.bizmoduleselect>label.active').length + count == 3){
                     $(this).children().addClass('active');
+                    $('label').not('.active').parent().css('pointer-events','none');
                     $('.bizmoduleselect>label').not('.active').attr('disabled','disabled');
+
                     $(this).children().removeClass('active');
                     $.bootstrapGrowl('Sólo puede seleccionar 3 habilidades.',{type:'info'});
                 } else{
                     $('.bizmoduleselect>label').not('.active').removeAttr('disabled');
+                    $('label').not('.active').parent().css('pointer-events','auto');
                 }
             });
 
