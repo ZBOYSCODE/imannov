@@ -1456,6 +1456,13 @@ img.full-bg {
     }
 }
 
+@media screen (max-width: 480px){
+    #login-container{
+        width: 200px;
+        top: 186px;
+    }
+}
+
 /* Full Page Container */
 .full-page-container {
     position: absolute;
