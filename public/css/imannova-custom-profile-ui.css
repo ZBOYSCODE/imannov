@@ -107,11 +107,12 @@ ul.user-menu-list {
     margin-top: 20px;
     margin-bottom: 0;
     padding: 10px;
-    border: 1px solid #eee;
+    padding-left: 15px;
+    border: 1px solid #eee;    
+    text-align: center;
 }
 ul.user-menu-list>li {
     padding-bottom: 8px;
-    text-align: center;
 }
 
 div.user-menu div.user-menu-content:not(.active){
@@ -270,3 +271,4 @@ section {
         max-height: 400px;
     }
 }
+

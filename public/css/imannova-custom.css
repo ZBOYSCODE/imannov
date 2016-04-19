@@ -321,9 +321,25 @@ body {
 	.content-header-media > img {
 	    height: 100px;
 	}
+
 }
 
 @media screen and (min-width: 1px) {
 .block, .widget {
     margin-bottom: 16px;
+}
+
+.form-group2{
+	width: 85%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 15px;
+}
+
+.list2{
+  list-style: none;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 10px;
+  border: 1px solid #eee;
 }
