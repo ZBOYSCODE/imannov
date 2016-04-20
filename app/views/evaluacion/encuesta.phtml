@@ -59,7 +59,7 @@
 							</a>
 						</div>														
                     </div>
-					<div class="form-group row text-center" style="margin-top: 25px; width: 82%; margin-left: auto; margin-right: auto;">	
+					<div class="form-group2 row text-center" style="margin-top: 25px; width: 82%; margin-left: auto; margin-right: auto;">	
 						<div class="btn-group" style="width: 100%; margin: 0; ">
 							<?php foreach ($habilidades as $habilidad): ?>
 								<a href="#" class="btn btn-primary <?php print($enunciado->hbld_id == $habilidad->hbld_id?'active':'') ?>" style="width: <?php print(99/count($habilidades).'%') ?>;border-radius: 0px; margin-left: 3px;"><?php print($habilidad->hbld_nombre) ?></a>
@@ -79,7 +79,7 @@
 							<?php print($enunciado->encd_texto) ?>
 						</h3>
 						<?php if ($numPreg-1 == count($enunciados)): ?>
-							<div class="form-group row text-center">
+							<div class="form-group2 row text-center">
 								<div class="col-lg-12">
 									<a href="#" class="widget widget widget-hover-effect4 btn-info stp-trat-btn h" data-next="resultado" data-stp="" data-val="" data-type="pregunta1" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
 										<div class="widget-simple">
@@ -117,7 +117,7 @@
 								</div>														
 		                    </div>
 	                	<?php else: ?>
-							<div class="form-group row text-center">
+							<div class="form-group2 row text-center">
 								<div class="col-lg-12">
 									<a href="#" class="widget widget widget-hover-effect4 btn-info stp-trat-btn h" data-next="<?php print('pregunta'.$numPreg) ?>" data-stp="" data-val="" data-type="pregunta1" style="-webkit-transform:translateY(-3px);transform:translateY(-3px);-webkit-box-shadow:0 5px 5px rgba(0,0,0,.1);box-shadow:0 5px 5px rgba(0,0,0,.1)">
 										<div class="widget-simple">
@@ -155,10 +155,10 @@
 								</div>														
 		                    </div>	                		
 	                    <?php endif ?>
-						<div class="form-group row text-center" style="margin-top: 25px;margin: 0;">	
-							<div class="btn-group" style="width: 100%;">
+						<div class="form-group2 row text-center" style="margin-top: 25px; width: 82%; margin-left: auto; margin-right: auto;">	
+							<div class="btn-group" style="width: 100%; margin: 0;">
 								<?php foreach ($habilidades as $habilidad): ?>
-									<a href="#" class="btn btn-primary <?php print($enunciado->hbld_id == $habilidad->hbld_id?'active':'') ?>" style="width: <?php print(99/count($habilidades).'%') ?>;border-radius: 0px;"><?php print($habilidad->hbld_nombre) ?></a>
+									<a href="#" class="btn btn-primary <?php print($enunciado->hbld_id == $habilidad->hbld_id?'active':'') ?>" style="width: <?php print(99/count($habilidades).'%') ?>;border-radius: 0px; margin-left: 3px;"><?php print($habilidad->hbld_nombre) ?></a>
 								<?php endforeach ?>
 							</div>
 	                    </div>                    
