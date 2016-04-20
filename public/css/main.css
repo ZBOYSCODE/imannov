@@ -1456,6 +1456,14 @@ img.full-bg {
     }
 }
 
+@media screen and (max-width: 480px) {
+    // General 
+    #login-container{
+        width: 90% !important;
+        margin-left: 0px;
+        left:0px;
+    }
+}
 
 /* Full Page Container */
 .full-page-container {
@@ -4256,7 +4264,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
     .block, .block.full {border: none !important; padding: 0 !important;}
     .block-title {margin: 0 0 20px !important;}
 }
-
 
 
 
