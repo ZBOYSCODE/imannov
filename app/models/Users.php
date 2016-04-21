@@ -159,14 +159,11 @@ class Users extends Model
             )
         ));
 
-        $this->hasManyToMany(
+        $this->hasMany(
             "id",
-            "Gabs\Model\UserGrupo",
+            __NAMESPACE__ ."\UserGrupo",
             "user_id",
-            "grpo_id",
-            "Gabs\Model\Grupo",
-            "grpo_id",
-            array('alias' => 'grupos')
-        );
+            array(
+            'alias' => 'userGrupo'));
     }
 }

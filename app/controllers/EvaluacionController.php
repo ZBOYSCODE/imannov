@@ -1,8 +1,6 @@
 <?php
 namespace Gabs\Controllers;
-use Gabs\Models\Grupo;
-use Gabs\Models\Habilidad;
-use Gabs\Models\Users;
+use \Gabs\Services\Services as Services;
 
 class evaluacionController extends ControllerBase
 {
@@ -123,10 +121,11 @@ class evaluacionController extends ControllerBase
     }
 
     public function perfilAction() {
-        $modelGrupo = new Grupo();
-        $pcData['grupo'] = $modelGrupo->getAll()[0];
 
-
+        //Ejemplos de llamadas a Service (Capa de negocio)
+        //$cantidad = Services::getService('Users')->getCantidadGrupos(1);
+        //$user = Services::getService('Users')->getUserById(1);
+        //$grupos = Services::getService('Users')->getUsersByGrupo(1);
         $menu = 'menu/topMenu';
         $content = 'evaluacion/perfil';
         $jsScript = 
@@ -213,7 +212,6 @@ class evaluacionController extends ControllerBase
             chart2.draw(data2, options2);
           }
         ";
-
 
         echo $this->view->render('theme',array('topMenu'=>$menu,'menuSel'=>'perfil','pcView'=>$content,'pcData'=>$pcData, 'jsScript' => $jsScript));
     }

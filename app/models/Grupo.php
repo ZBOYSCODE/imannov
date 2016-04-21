@@ -4,6 +4,8 @@ namespace Gabs\Models;
 
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Query;
+use Gabs\Models\Grupo;
+use Gabs\Models\UserGrupo;
 
 
 class Grupo extends Model
@@ -12,48 +14,36 @@ class Grupo extends Model
 
     public $grpo_nombre;
 
+    public $grpo_descripcion;
+
+    public $grpo_tipo_periodicidad;
+
+    public $grpo_cantidad_periodicidad;
+
     public function getSource()
     {
         return 'grupo';
     }
 
-    public function testing()
+    public function columnMap()
     {
-       
-
-        //forma 1 phql
-        $query = new Query("SELECT * FROM  Gabs\Models\Grupo", $this->getDI());
-        return $query->execute();
-
-
-        //forma 2 phql
-        //$query = "SELECT * FROM  Gabs\Models\Test";
-        //$query = $this->modelsManager->createQuery($query);
-        //return $query->execute()[0]->id;
-
-
-        //forma 3 directa mysql, hay que extender baseModel.php
-        /*$result=$this->db->query("SELECT * FROM Test"); // Working now
-        echo $result->numRows();
-        print_r($result->fetchAll());*/
-    }
-
-    public function getAll()
-    {
-        $query = new Query("SELECT * FROM  Gabs\Models\Grupo", $this->getDI());
-        return $query->execute();        
+        return array(
+            'grpo_id' => 'grpo_id',
+            'grpo_nombre' => 'grpo_nombre',
+            'grpo_descripcion' => 'grpo_descripcion',
+            'grpo_tipo_periodicidad' => 'grpo_tipo_periodicidad',
+            'grpo_cantidad_periodicidad' => 'grpo_cantidad_periodicidad'
+        );
     }
 
     public function initialize()
     {
-        $this->hasManyToMany(
+        $this->hasMany(
             "grpo_id",
-            "Gabs\Model\UserGrupo",
+            __NAMESPACE__ ."\UserGrupo",
             "grpo_id",
-            "user_id",
-            "Gabs\Model\Users",
-            "id",
-            array('alias' => 'users')
+            array(
+            'alias' => 'userGrupo')
         );
     }    
 

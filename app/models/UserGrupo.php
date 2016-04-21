@@ -19,22 +19,12 @@ class UserGrupo extends Model
         return 'user_grupo';
     }
 
-
-
-    public function getByGrupo($id)
-    {
-        $query = new Query("SELECT * FROM  Gabs\Models\UserGrupo WHERE grpo_id = ".$id, $this->getDI());
-        return $query->execute();   
-    }    
-
     public function initialize()
     {
-        $this->belongsTo('grpo_id', 'Calin\Core\Models\Grupo', 'grpo_id', 
-            array('alias' => 'grupo')
-        );
-        $this->belongsTo('user_id', 'Calin\Core\Models\Users', 'id', 
-            array('alias' => 'user')
-        );
+        $this->belongsTo('grpo_id', __NAMESPACE__ .'\Grupo', 'grpo_id',array(
+            'alias' => 'grupo'));
+        $this->belongsTo('user_id', __NAMESPACE__ .'\Users', 'id',array(
+            'alias' => 'user'));
     }    
 
 }
