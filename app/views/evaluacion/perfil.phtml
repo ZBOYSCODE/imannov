@@ -11,9 +11,9 @@
             <div class="row coralbg white">
                 <div class="col-md-6 no-pad">
                     <div class="user-pad">
-                        <h3>Miguel Jara</h3>
+                        <h3> <?php print($pcData['user']->name) ?></h3>
                         <h5 class="white"><i class="gi gi-group"></i> <?php print($pcData['grupo']->grpo_nombre) ?></h5>
-                        <h4 class="white"><i class="gi gi-envelope"></i> miguel.jara@zentagroup.com</h4>
+                        <h4 class="white"><i class="gi gi-envelope"></i> <?php print($pcData['user']->email) ?></h4>
 
                     </div>
                 </div>
@@ -27,15 +27,15 @@
             <div class="row overview">
                 <div class="col-md-4 user-pad text-center">
                     <h3>PUNTOS</h3>
-                    <h4>478 Pts</h4>
+                    <h4><?php print($pcData['user']->puntos) ?></h4>
                 </div>
                 <div class="col-md-4 user-pad text-center">
                     <h3>RECONOCIMIENTOS</h3>
-                    <h4>21</h4>
+                    <h4><?php print_r($pcData['totalreconocimientos']); ?></h4>
                 </div>
                 <div class="col-md-4 user-pad text-center">
                     <h3>HABILIDADES RECONOCIDAS</h3>
-                    <h4>6/20</h4>
+                    <h4><?php print_r($pcData['totalhabilidadesreconocidas']."/20"); ?></h4>
                 </div>
             </div>
         </div>

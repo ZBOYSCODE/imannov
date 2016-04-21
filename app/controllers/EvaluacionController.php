@@ -3,6 +3,8 @@ namespace Gabs\Controllers;
 use Gabs\Models\Grupo;
 use Gabs\Models\Habilidad;
 use Gabs\Models\Users;
+use Gabs\Models\HabilidadUserEvaluacion;
+use Gabs\Models\UserHabilidad;
 
 class evaluacionController extends ControllerBase
 {
@@ -125,6 +127,22 @@ class evaluacionController extends ControllerBase
     public function perfilAction() {
         $modelGrupo = new Grupo();
         $pcData['grupo'] = $modelGrupo->getAll()[0];
+
+        $modelUser = new Users();
+        $pcData['user']=$modelUser::findFirst($this->auth->getIdentity()['id']);
+
+        $modelHabilidadUserEvaluacion = new HabilidadUserEvaluacion();
+        $totalreconocimientos=$modelHabilidadUserEvaluacion->getHabilidadUserEvaluacion($this->auth->getIdentity()['id']);
+        $pcData['totalreconocimientos']=$totalreconocimientos[0]->toArray()[0];
+        
+
+        $modelUserHabilidad = new UserHabilidad();
+        $totalhabilidadesreconocidas=$modelUserHabilidad->getUserHabilidad($this->auth->getIdentity()['id']);
+        $pcData['totalhabilidadesreconocidas']=$totalhabilidadesreconocidas[0]->toArray()[0];
+        
+        
+
+
 
 
         $menu = 'menu/topMenu';

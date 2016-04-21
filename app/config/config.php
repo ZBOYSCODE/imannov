@@ -4,7 +4,7 @@ return new \Phalcon\Config([
         'adapter' => 'Mysql',
         'host' => 'localhost',
         'username' => 'root',
-        'password' => $_SERVER['HTTP_HOST']=='localhost'?'':'z3nta',
+        'password' => 'z3nta',
         'dbname' => 'imannova_eval'
     ],
     'application' => [

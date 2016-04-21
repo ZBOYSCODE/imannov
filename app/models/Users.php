@@ -65,6 +65,8 @@ class Users extends Model
      */
     public $active;
 
+    public $puntos;
+
     /**
      * Before create the user assign a password
      */
@@ -168,5 +170,16 @@ class Users extends Model
             "grpo_id",
             array('alias' => 'grupos')
         );
+    }
+
+    public function getSource()
+    {
+        return 'users';
+    }
+
+    public function getUsers($id)
+    {
+        $query = new Query("SELECT * FROM  Gabs\Models\Users where user_id = ".$id, $this->getDI() );
+        return $query->execute();
     }
 }

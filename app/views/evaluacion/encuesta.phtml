@@ -59,8 +59,8 @@
 							</a>
 						</div>														
                     </div>
-					<div class="form-group2 row text-center" style="margin-top: 25px; width: 82%; margin-left: auto; margin-right: auto;">	
-						<div class="btn-group" style="width: 100%; margin: 0; ">
+					<div class="form-group2 row text-center" style="margin-top: 25px; width: 83%; margin-left: auto; margin-right: auto; text-align: center;">	
+						<div class="btn-group" style="width: 100%; margin-left: 4px; ">
 							<?php foreach ($habilidades as $habilidad): ?>
 								<a href="#" class="btn btn-primary <?php print($enunciado->hbld_id == $habilidad->hbld_id?'active':'') ?>" style="width: <?php print(((99/count($habilidades))-1).'%') ?>;border-radius: 0px; margin-left: 3px;"><?php print($habilidad->hbld_nombre) ?></a>
 							<?php endforeach ?>
@@ -155,8 +155,8 @@
 								</div>														
 		                    </div>	                		
 	                    <?php endif ?>
-						<div class="form-group2 row text-center" style="margin-top: 25px; width: 82%; margin-left: auto; margin-right: auto;">	
-							<div class="btn-group" style="width: 100%; margin: 0;">
+						<div class="form-group2 row text-center" style="margin-top: 25px; width: 83%; margin-left: auto; margin-right: auto; text-align: center;">	
+							<div class="btn-group" style="width: 100%; margin-left: 4px;">
 								<?php foreach ($habilidades as $habilidad): ?>
 									<a href="#" class="btn btn-primary <?php print($enunciado->hbld_id == $habilidad->hbld_id?'active':'') ?>" style="width: <?php print(((99/count($habilidades))-1).'%') ?>;border-radius: 0px; margin-left: 3px;"><?php print($habilidad->hbld_nombre) ?></a>
 								<?php endforeach ?>
