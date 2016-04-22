@@ -1,4 +1,5 @@
 <?php
+
 namespace Gabs\Controllers;
 use Gabs\Models\Grupo;
 use Gabs\Models\Habilidad;
@@ -137,7 +138,11 @@ class evaluacionController extends ControllerBase
 
         $pcData['totalhabilidadesreconocidas'] = Services::getService('Users')->getCantidadHabilidadesByUser($user_id);
 
-        
+       /* $pcData['usergrupo'] = Services::getService('Grupo')->getUsersByGrupo($user_id);
+        print_r($pcData['usergrupo']);
+        exit();*/
+
+
         $menu = 'menu/topMenu';
         $content = 'evaluacion/perfil';
         $jsScript = 

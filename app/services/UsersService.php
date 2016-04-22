@@ -34,4 +34,5 @@ class UsersService
 	{
 		return count(UserHabilidad::find("user_id = {$id}"));
 	}
+
 }

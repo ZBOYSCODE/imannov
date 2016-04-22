@@ -25,6 +25,13 @@ class Grupo extends Model
         return 'grupo';
     }
 
+    public function getAll()
+    {
+        $query = new Query("SELECT * FROM  Gabs\Models\Grupo", $this->getDI());
+        return $query->execute();
+    }
+    
+
     public function columnMap()
     {
         return array(
