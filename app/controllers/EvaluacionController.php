@@ -138,10 +138,6 @@ class evaluacionController extends ControllerBase
 
         $pcData['totalhabilidadesreconocidas'] = Services::getService('Users')->getCantidadHabilidadesByUser($user_id);
 
-       /* $pcData['usergrupo'] = Services::getService('Grupo')->getUsersByGrupo($user_id);
-        print_r($pcData['usergrupo']);
-        exit();*/
-
 
         $menu = 'menu/topMenu';
         $content = 'evaluacion/perfil';
@@ -234,10 +230,13 @@ class evaluacionController extends ControllerBase
     }
 
     public function gruposEvaluacionAction() {
-
+/*
         $modelGrupo = new Grupo();
 
-        $pcData['grupos'] = $modelGrupo->getAll();
+        $pcData['grupos'] = $modelGrupo->getAll();*/
+
+        $pcData['grupos'] = Services::getService('Grupo')->getGrupoByGrupo($id);
+        
 
         $menu = 'menu/topMenu';
         $content = 'evaluacion/configurar-grupos-evaluacion';
