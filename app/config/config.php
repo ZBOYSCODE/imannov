@@ -4,11 +4,12 @@ return new \Phalcon\Config([
         'adapter' => 'Mysql',
         'host' => 'localhost',
         'username' => 'root',
-        'password' => 'z3nta',
+        'password' => $_SERVER['HTTP_HOST']=='localhost'?'':'z3nta',
         'dbname' => 'imannova_eval'
     ],
     'application' => [
         'controllersDir' => APP_DIR . '/controllers/',
+        'servicesDir' => APP_DIR . '/services/',
         'modelsDir' => APP_DIR . '/models/',
         'formsDir' => APP_DIR . '/forms/',
         'viewsDir' => APP_DIR . '/views/',

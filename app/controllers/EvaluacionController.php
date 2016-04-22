@@ -5,6 +5,7 @@ use Gabs\Models\Habilidad;
 use Gabs\Models\Users;
 use Gabs\Models\HabilidadUserEvaluacion;
 use Gabs\Models\UserHabilidad;
+use \Gabs\Services\Services as Services;
 
 class evaluacionController extends ControllerBase
 {
@@ -125,26 +126,18 @@ class evaluacionController extends ControllerBase
     }
 
     public function perfilAction() {
-        $modelGrupo = new Grupo();
-        $pcData['grupo'] = $modelGrupo->getAll()[0];
 
-        $modelUser = new Users();
-        $pcData['user']=$modelUser::findFirst($this->auth->getIdentity()['id']);
+        $user_id = $this->auth->getIdentity()['id'];
 
-        $modelHabilidadUserEvaluacion = new HabilidadUserEvaluacion();
-        $totalreconocimientos=$modelHabilidadUserEvaluacion->getHabilidadUserEvaluacion($this->auth->getIdentity()['id']);
-        $pcData['totalreconocimientos']=$totalreconocimientos[0]->toArray()[0];
+        //Ejemplos de llamadas a Service (Capa de negocio)
+        $pcData['grupo'] = Services::getService('Grupo')->getGruposByUser($user_id)->getFirst();
+        $pcData['user'] = Services::getService('Users')->getUserById($user_id);
+
+        $pcData['totalreconocimientos'] = Services::getService('Users')->getCantidadReconocimientosByUser($user_id);
+
+        $pcData['totalhabilidadesreconocidas'] = Services::getService('Users')->getCantidadHabilidadesByUser($user_id);
+
         
-
-        $modelUserHabilidad = new UserHabilidad();
-        $totalhabilidadesreconocidas=$modelUserHabilidad->getUserHabilidad($this->auth->getIdentity()['id']);
-        $pcData['totalhabilidadesreconocidas']=$totalhabilidadesreconocidas[0]->toArray()[0];
-        
-        
-
-
-
-
         $menu = 'menu/topMenu';
         $content = 'evaluacion/perfil';
         $jsScript = 
@@ -231,7 +224,6 @@ class evaluacionController extends ControllerBase
             chart2.draw(data2, options2);
           }
         ";
-
 
         echo $this->view->render('theme',array('topMenu'=>$menu,'menuSel'=>'perfil','pcView'=>$content,'pcData'=>$pcData, 'jsScript' => $jsScript));
     }

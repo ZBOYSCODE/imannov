@@ -25,11 +25,16 @@ class HabilidadUserEvaluacion extends Model
         return 'habilidad_user_evaluacion';
     }
 
-    public function getHabilidadUserEvaluacion($id){
-
-    $query = new Query("SELECT count(*) FROM  Gabs\Models\HabilidadUserEvaluacion where user_evaluado_id = ".$id." group by eval_id", $this->getDI());
-        return $query->execute();
-
-    }
+    public function initialize()
+    {
+        $this->belongsTo('hbld_id', __NAMESPACE__ .'\Habilidad', 'hbld_id',array(
+            'alias' => 'habilidad'));
+        $this->belongsTo('user_evaluador_id', __NAMESPACE__ .'\Users', 'id',array(
+            'alias' => 'userEvaluador'));
+        $this->belongsTo('user_evaluado_id', __NAMESPACE__ .'\Users', 'id',array(
+            'alias' => 'userEvaluado'));    
+        $this->belongsTo('eval_id', __NAMESPACE__ .'\Evaluacion', 'eval_id',array(
+            'alias' => 'evaluacion'));                   
+    }     
 
 }

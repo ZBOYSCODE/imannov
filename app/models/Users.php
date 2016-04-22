@@ -161,15 +161,44 @@ class Users extends Model
             )
         ));
 
+        $this->hasMany(
+            "id",
+            __NAMESPACE__ ."\UserGrupo",
+            "user_id",
+            array(
+            'alias' => 'userGrupo'));
+
+        $this->hasMany(
+            "id",
+            __NAMESPACE__ ."\HabilidadUserEvaluacion",
+            "user_evaluado_id",
+            array(
+            'alias' => 'habilidadUserEvaluacion'));
+
+        $this->hasMany(
+            "id",
+            __NAMESPACE__ ."\HabilidadUserEvaluacion",
+            "user_evaluador_id",
+            array(
+            'alias' => 'habilidadUserEvaluacion'));  
+
+        $this->hasMany(
+            "id",
+            __NAMESPACE__ ."\UserHabilidad",
+            "user_id",
+            array(
+            'alias' => 'userHabilidad')); 
+
         $this->hasManyToMany(
             "id",
-            "Gabs\Model\UserGrupo",
+             __NAMESPACE__ ."\UserGrupo",
             "user_id",
             "grpo_id",
-            "Gabs\Model\Grupo",
+            __NAMESPACE__ ."\Grupo",
             "grpo_id",
             array('alias' => 'grupos')
-        );
+        );                         
+
     }
 
     public function getSource()
@@ -182,4 +211,9 @@ class Users extends Model
         $query = new Query("SELECT * FROM  Gabs\Models\Users where user_id = ".$id, $this->getDI() );
         return $query->execute();
     }
+
+    public function getGrupos($parameters = null)
+    {
+        return $this->getRelated('Grupo', $parameters);
+    }    
 }

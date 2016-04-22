@@ -6,25 +6,27 @@ use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Query;
 
 
-class UserGrupo extends Model
+class UserHabilidad extends Model
 {
-    public $user_grpo_id;
+    public $user_hbld_id;
+
+    public $porcentaje;
 
     public $user_id;
 
-    public $grpo_id;
+    public $hbld_id;
 
     public function getSource()
     {
-        return 'user_grupo';
+        return 'user_habilidad';
     }
 
     public function initialize()
     {
-        $this->belongsTo('grpo_id', __NAMESPACE__ .'\Grupo', 'grpo_id',array(
-            'alias' => 'grupo'));
+        $this->belongsTo('hbld_id', __NAMESPACE__ .'\Habilidad', 'hbld_id',array(
+            'alias' => 'habilidad'));
         $this->belongsTo('user_id', __NAMESPACE__ .'\Users', 'id',array(
             'alias' => 'user'));
-    }    
+    }     
 
 }

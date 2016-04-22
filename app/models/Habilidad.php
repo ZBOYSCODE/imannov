@@ -25,7 +25,20 @@ class Habilidad extends Model
 
     public function initialize()
     {
-        $this->hasMany('hbld_id', 'Enunciado', 'hbld_id');
-    }
+        $this->hasMany(
+            "hbld_id",
+            __NAMESPACE__ ."\HabilidadUserEvaluacion",
+            "hbld_id",
+            array(
+            'alias' => 'habilidadUserEvaluacion')
+        );
 
+        $this->hasMany(
+            "hbld_id",
+            __NAMESPACE__ ."\UserHabilidad",
+            "hbld_id",
+            array(
+            'alias' => 'userHabilidad')
+        );        
+    }    
 }
