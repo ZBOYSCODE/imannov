@@ -235,7 +235,9 @@ class evaluacionController extends ControllerBase
 
         $pcData['grupos'] = $modelGrupo->getAll();*/
 
-        $pcData['grupos'] = Services::getService('Grupo')->getGrupoByGrupo($id);
+        $id = $this->auth->getIdentity()['id'];
+
+        $pcData['grupos'] = Services::getService('Grupo')->getGruposByUser($id);
         
 
         $menu = 'menu/topMenu';

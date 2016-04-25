@@ -18,4 +18,9 @@ class GrupoService
 	{
 		return Users::find($id);
 	}
+
+	public function getGrupos($id)
+	{
+		return Grupo::find($id);
+	}
 }
