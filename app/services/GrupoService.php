@@ -14,13 +14,13 @@ class GrupoService
 		return Users::findFirst($id)->grupos;
 	}
 
-	public function getGrupoByGrupo($id)
+	public function getGrupoById($id)
 	{
-		return Users::find($id);
+		return Grupo::findFirst($id);
 	}
 
-	public function getGrupos($id)
+	public function getGrupos()
 	{
-		return Grupo::find($id);
+		return Grupo::find();
 	}
 }

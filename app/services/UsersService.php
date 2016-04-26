@@ -22,7 +22,7 @@ class UsersService
 
 	public function getUsersByGrupo($id)
 	{
-		return Grupo::findFirst($id)->userGrupo->user;
+		return Grupo::findFirst($id)->users;
 	}
 
 	public function getCantidadReconocimientosByUser($id)

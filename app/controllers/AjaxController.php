@@ -1,17 +1,15 @@
 <?php
 namespace Gabs\Controllers;
-use Gabs\Models\Personas;
-use Gabs\Models\Enunciado;
-use Gabs\Models\Habilidad;
-use Gabs\Models\Users;
+use Gabs\Services\Services;
 use Gabs\Models\Grupo;
 use Gabs\Models\UserGrupo;
- 
+use Gabs\Models\Enunciado;
+use Gabs\Models\Evaluacion;
+use Gabs\Models\Habilidad;
+
 class AjaxController extends ControllerBase
 {
-    /**
-     * Default action. Set the public layout (layouts/public.volt)
-     */
+    
     public function indexAction()
     {
 
@@ -83,12 +81,10 @@ class AjaxController extends ControllerBase
     public function cargarCrearGrupoAction()
     {
 
-        $modelUser = new Users();
-
         $users = array();
 
         for ($i=6; $i <11 ; $i++) { 
-            array_push($users, $modelUser::findFirst($i));
+            array_push($users, Services::getService('Users')->getUserById($i));
         }
 
         $dataView['users'] = $users;
@@ -102,34 +98,23 @@ class AjaxController extends ControllerBase
 
     public function cargarEditarGrupoAction()
     {
-
-        $modelUser = new Users();
-        $modelGrupo = new Grupo();
-        $modelUserGrupo = new UserGrupo();
-
         $users = array();
 
         for ($i=6; $i <11 ; $i++) { 
-            array_push($users, $modelUser::findFirst($i));
+            array_push($users, Services::getService('Users')->getUserById($i));
         }
 
         $dataView['users'] = $users;
 
-        $dataView['grupo'] = $modelGrupo::findFirst($_POST['id']);
+        $dataView['grupo'] = Services::getService('Grupo')->getGrupoById($_POST['id']);
 
-        $userGrupos = $modelUserGrupo->getByGrupo($dataView['grupo']->grpo_id);
-
-        $users = array();
-
-        foreach ($userGrupos as $userGrupo) {
-        	array_push($users, $userGrupo->user_id);
-        }
+        $users = Services::getService('Users')->getUsersByGrupo($dataView['grupo']->grpo_id);
 
         $str = '';
 
-        foreach ($users as $user_id) {
-        	$str = $str."$(\"#check-users".$user_id."\").toggleClass('hidden'); 
-        				 $(\"#chat-user".$user_id."\").addClass('after-focus');";
+        foreach ($users as $user) {
+        	$str = $str."$(\"#check-users".$user->id."\").toggleClass('hidden'); 
+        				 $(\"#chat-user".$user->id."\").addClass('after-focus');";
         }
 
 
@@ -142,24 +127,22 @@ class AjaxController extends ControllerBase
 
     public function guardarGrupoAction()
     {
-    	$modelGrupo = new Grupo();
+    	$grupo = new Grupo();
     	
-    	$modelGrupo->grpo_nombre = $_POST['nombre'];
-    	$modelGrupo->grpo_descripcion = $_POST['descripcion'];
-    	$modelGrupo->grpo_tipo_periodicidad = $_POST['tipoPeriodicidad'];
-    	$modelGrupo->grpo_cantidad_periodicidad = $_POST['cantidadPeriodicidad'];
-    	$modelGrupo->save();
+    	$grupo->grpo_nombre = $_POST['nombre'];
+    	$grupo->grpo_descripcion = $_POST['descripcion'];
+    	$grupo->grpo_tipo_periodicidad = $_POST['tipoPeriodicidad'];
+    	$grupo->grpo_cantidad_periodicidad = $_POST['cantidadPeriodicidad'];
+    	$grupo->save();
     	$users = explode(',', $_POST['personas']);
-    	$modelGrupo->grpo_id;
     	foreach ($users as $user_id) {
-    		$modelUserGrupo = new UserGrupo();
-    		$modelUserGrupo->user_id = $user_id;
-    		$modelUserGrupo->grpo_id = $modelGrupo->grpo_id;
-    		$modelUserGrupo->save();
+    		$userGrupo = new UserGrupo();
+    		$userGrupo->user_id = $user_id;
+    		$userGrupo->grpo_id = $grupo->grpo_id;
+    		$userGrupo->save();
     	}
 
-    	$modelGrupo = new Grupo();
-    	$dataView['grupos'] = $modelGrupo->getAll();
+    	$dataView['grupos'] = Services::getService('Grupo')->getGrupos();
 
     	$this->mifaces->newFaces();
 		$toRend=$this->view->render('evaluacion/configurar-grupos-lista',$dataView);
@@ -171,25 +154,26 @@ class AjaxController extends ControllerBase
 
     public function editarGrupoAction()
     {
-    	$modelGrupo = new Grupo();
+    	$grupo = new Grupo();
     	
-    	$modelGrupo->grpo_id = $_POST['id'];
-    	$modelGrupo->grpo_nombre = $_POST['nombre'];
-    	$modelGrupo->grpo_descripcion = $_POST['descripcion'];
-    	$modelGrupo->grpo_tipo_periodicidad = $_POST['tipoPeriodicidad'];
-    	$modelGrupo->grpo_cantidad_periodicidad = $_POST['cantidadPeriodicidad'];
-    	$modelGrupo->update();
+    	$grupo->grpo_id = $_POST['id'];
+    	$grupo->grpo_nombre = $_POST['nombre'];
+    	$grupo->grpo_descripcion = $_POST['descripcion'];
+    	$grupo->grpo_tipo_periodicidad = $_POST['tipoPeriodicidad'];
+    	$grupo->grpo_cantidad_periodicidad = $_POST['cantidadPeriodicidad'];
+    	$grupo->update();
+        /*
     	$users = explode(',', $_POST['personas']);
-    	$modelGrupo->grpo_id;
+    	$grupo->grpo_id;
     	foreach ($users as $user_id) {
     		$modelUserGrupo = new UserGrupo();
     		$modelUserGrupo->user_id = $user_id;
-    		$modelUserGrupo->grpo_id = $modelGrupo->grpo_id;
+    		$modelUserGrupo->grpo_id = $grupo->grpo_id;
     		$modelUserGrupo->update();
-    	}
+    	}*/
 
-    	$modelGrupo = new Grupo();
-    	$dataView['grupos'] = $modelGrupo->getAll();
+    	$grupo = new Grupo();
+    	$dataView['grupos'] = Services::getService('Grupo')->getGrupos();
 
     	$this->mifaces->newFaces();
 		$toRend=$this->view->render('evaluacion/configurar-grupos-lista',$dataView);

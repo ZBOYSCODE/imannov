@@ -61,7 +61,7 @@ class Grupo extends Model
             "user_id",
             __NAMESPACE__ ."\Users",
             "id",
-            array('alias' => 'grupos')
+            array('alias' => 'users')
         );                                 
     }    
 

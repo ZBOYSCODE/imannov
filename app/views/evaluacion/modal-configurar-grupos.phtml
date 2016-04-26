@@ -1,5 +1,3 @@
-            <?php $tipos_periodicidad = array('dias','meses','semestres') ?>
-
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                 	<div  class="modal-header modal-formularios">
@@ -32,15 +30,18 @@
 											</div>
 											<div class="col-xs-4">
 												<select name="tipoPeriodicidad" class="form-control select-chosen" data-placeholder="Seleccione urgencia">
-													<?php if (isset($grupo)): ?>
-														<option value="<?php print($grupo->grpo_tipo_periodicidad) ?>" selected="selected"><?php print($tipos_periodicidad[$grupo->grpo_tipo_periodicidad]) ?></option>								
-													<?php else: ?>	
-														<option value="" selected="selected"></option>							
-													<?php endif ?>
+													<?php if (isset($grupo)){ ?>
+														<option value="1" <?php $grupo->grpo_tipo_periodicidad==1?print('selected'):'' ?>>Días</option>
+														<option value="2" <?php $grupo->grpo_tipo_periodicidad==2?print('selected'):'' ?>>Meses</option>
+														<option value="3" <?php $grupo->grpo_tipo_periodicidad==3?print('selected'):'' ?>>Semestres</option>							
+													<?php }else{ ?>	
+														<option value="1">Días</option>
+														<option value="2">Meses</option>
+														<option value="3">Semestres</option>
+													<?php } ?>
 
-													<option value="1">Dias</option>
-													<option value="2">Meses</option>
-													<option value="3">Semestres</option>
+
+
 												</select>
 											</div>
 										</div>

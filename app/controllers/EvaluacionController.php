@@ -105,8 +105,13 @@ class evaluacionController extends ControllerBase
             });
 
             $('#btnResponder').click(function(){
-                var arr = $('.bizmoduleselect>label.active').find('input').map(function(){return $(this).val();}).get();
-                $('#btnResponder').data('val','ids='+arr);
+                if($('.bizmoduleselect>label.active').length == 0){
+                    $.bootstrapGrowl('Debe seleccionar al menos una habilidad.',{type:'info'});
+                    return false;
+                } else{
+                    var arr = $('.bizmoduleselect>label.active').find('input').map(function(){return $(this).val();}).get();
+                    $('#btnResponder').data('val','ids='+arr);
+                }
             });
 
             $(\".chat-user-online\").click(function(){
@@ -132,6 +137,7 @@ class evaluacionController extends ControllerBase
 
         //Ejemplos de llamadas a Service (Capa de negocio)
         $pcData['grupo'] = Services::getService('Grupo')->getGruposByUser($user_id)->getFirst();
+
         $pcData['user'] = Services::getService('Users')->getUserById($user_id);
 
         $pcData['totalreconocimientos'] = Services::getService('Users')->getCantidadReconocimientosByUser($user_id);
@@ -230,15 +236,7 @@ class evaluacionController extends ControllerBase
     }
 
     public function gruposEvaluacionAction() {
-/*
-        $modelGrupo = new Grupo();
-
-        $pcData['grupos'] = $modelGrupo->getAll();*/
-
-        $id = $this->auth->getIdentity()['id'];
-
-        $pcData['grupos'] = Services::getService('Grupo')->getGruposByUser($id);
-        
+        $pcData['grupos'] = Services::getService('Grupo')->getGrupos();
 
         $menu = 'menu/topMenu';
         $content = 'evaluacion/configurar-grupos-evaluacion';

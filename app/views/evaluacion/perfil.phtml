@@ -12,7 +12,7 @@
                 <div class="col-md-6 no-pad">
                     <div class="user-pad">
                         <h3> <?php print($pcData['user']->name) ?></h3>
-                        <h5 class="white"><i class="gi gi-group"></i> <?php print($pcData['grupo']->grpo_nombre) ?></h5>
+                        <h5 class="white"><i class="gi gi-group"></i> <?php print($pcData['grupo']?$pcData['grupo']->grpo_nombre:'Aún no perteneces a ningún grupo') ?></h5>
                         <h4 class="white"><i class="gi gi-envelope"></i> <?php print($pcData['user']->email) ?></h4>
 
                     </div>
@@ -29,7 +29,7 @@
                     <h3>PUNTOS</h3>
                     <h4><?php print($pcData['user']->puntos) ?></h4>
                 </div>
-                <div class="col-md-4 user-pad text-center">
+                <div class="col-md-4 user-pad text-center" style="padding-left: 0">
                     <h3>RECONOCIMIENTOS</h3>
                     <h4><?php print_r($pcData['totalreconocimientos']); ?></h4>
                 </div>
@@ -62,10 +62,10 @@
                 </h3>
                 <ul class="user-menu-list">
                     <li>
-                        <img src="img/medal1.png" width="45" title="Liderazgo"><h5>Súper Lider</h5>
+                        <img src="img/medal1.png" width="45" title="Liderazgo"><h5>Lider Innato</h5>
                     </li>
                     <li>
-                        <img src="img/medal2.png" width="45" title="Trabajo en Equipo"><h5>Compañero Fiel</h5>
+                        <img src="img/medal2.png" width="45" title="Trabajo en Equipo"><h5>El Mejor Compañero</h5>
                     </li>
                     <li>
                         <img src="img/medal3.png" width="45" title="Responsabilidad"><h5>Señor Responsable</h5>
