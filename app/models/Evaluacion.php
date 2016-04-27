@@ -27,4 +27,17 @@ class Evaluacion extends Model
             'alias' => 'habilidadUserEvaluacion')
         );
     }    
+
+     public function getAll()
+    {
+        $query = new Query("SELECT * FROM  Gabs\Models\Evaluacion", $this->getDI());
+        return $query->execute();
+            
+    }
+
+    public function contadorMes()
+    {
+        $query = new Query("SELECT COUNT(eval_fecha), month(eval_fecha) FROM Gabs\Models\Evaluacion group by month(eval_fecha   )", $this->getDI());
+        return $query->execute();
+    }
 }

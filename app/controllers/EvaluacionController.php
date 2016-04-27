@@ -7,6 +7,8 @@ use Gabs\Models\Users;
 use Gabs\Models\HabilidadUserEvaluacion;
 use Gabs\Models\UserHabilidad;
 use \Gabs\Services\Services as Services;
+use Gabs\Models\Evaluacion;
+
 
 class evaluacionController extends ControllerBase
 {
@@ -143,6 +145,8 @@ class evaluacionController extends ControllerBase
         $pcData['totalreconocimientos'] = Services::getService('Users')->getCantidadReconocimientosByUser($user_id);
 
         $pcData['totalhabilidadesreconocidas'] = Services::getService('Users')->getCantidadHabilidadesByUser($user_id);
+
+        $pcData['mes'] = Services::getService('Users')->getMes();
 
 
         $menu = 'menu/topMenu';

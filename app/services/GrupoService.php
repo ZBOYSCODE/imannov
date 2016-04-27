@@ -3,6 +3,7 @@ namespace Gabs\Services;
 use Gabs\Models\Grupo;
 use Gabs\Models\Users;
 use Gabs\Models\UserGrupo;
+use Gabs\Models\Evaluacion;
 
 
 // Ejemplo Clase Service
@@ -23,4 +24,5 @@ class GrupoService
 	{
 		return Grupo::find();
 	}
+
 }
