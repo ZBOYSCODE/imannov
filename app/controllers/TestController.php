@@ -9,7 +9,10 @@ class TestController extends ControllerBase
 {
 	public function indexAction()
 	{
-		var_dump(Test::contadorMes());
+		$testModel = new Test();
+		foreach ($testModel->contadorMes() as $val) {
+			print("cantidad: {$val->cantidad} mes: {$val->mes}");
+		};
 	}
 
 	public function ondexAction()
