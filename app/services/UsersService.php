@@ -38,7 +38,10 @@ class UsersService
 
 	public function getMes()
 	{
-		return (Evaluacion::contadorMes());
+		$modelEvaluacion = new Evaluacion();
+		return $modelEvaluacion->contadorMes();
 	}
+
+	
 
 }

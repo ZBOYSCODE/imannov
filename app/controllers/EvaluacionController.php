@@ -19,6 +19,8 @@ class evaluacionController extends ControllerBase
     {   
 
         $this->perfilAction();
+
+
     }
 
     public function evaluacionAction()
@@ -147,6 +149,10 @@ class evaluacionController extends ControllerBase
         $pcData['totalhabilidadesreconocidas'] = Services::getService('Users')->getCantidadHabilidadesByUser($user_id);
 
         $pcData['mes'] = Services::getService('Users')->getMes();
+
+        $evaluacionModel = new Evaluacion();
+        /*foreach ($testModel->contadorMes() as $val) { };*/ 
+        $pcData['fecha'] = $evaluacionModel->contadorMes();
 
 
         $menu = 'menu/topMenu';

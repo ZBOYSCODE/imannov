@@ -72,27 +72,22 @@
                     </li>
                 </ul>
             </div>
-                <?php
-
-                    
-                    $fecha='2016-10-15';
-                    date('n',strtotime($fecha));
-                    $meses = array('','Enero','Febrero','Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
-                 ?>
+                
             <div class="user-menu-content">
                 <h3>
                     Mis Encuestas Respondidas
                 </h3>
                 <ul class="user-menu-list">
+                <?php
+
+                    foreach ($pcData['fecha'] as $val) {
+                    $meses = array('','Enero ','Febrero ','Marzo ', 'Abril ', 'Mayo ', 'Junio ', 'Julio ', 'Agosto ', 'Septiembre ', 'Octubre ', 'Noviembre ', 'Diciembre ');
+                       
+                 ?>
                     <li>
-                        <h4><?php print_r($meses[date('n',strtotime($fecha))]) ?> <small class="coral"> <i class="gi gi-edit"></i> <?php print_r($pcData['mes']); ?></small></h4>
+                        <h4><?php print_r($meses[$val->mes]); ?> <small class="coral"> <i class="gi gi-edit"></i> <?php print_r($val->cantidad); ?></small></h4>
                     </li>
-                    <li>
-                        <h4>Febrero <small class="coral"><i class="gi gi-edit"></i> 10 </small></h4>
-                    </li>
-                    <li>
-                        <h4>Enero <small class="coral"><i class="gi gi-edit"></i> 1</small></h4>
-                    </li>
+                <?php }; ?>
                 </ul>
             </div>
             
