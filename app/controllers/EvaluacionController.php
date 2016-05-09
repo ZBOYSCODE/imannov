@@ -8,6 +8,7 @@ use Gabs\Models\HabilidadUserEvaluacion;
 use Gabs\Models\UserHabilidad;
 use \Gabs\Services\Services as Services;
 use Gabs\Models\Evaluacion;
+use Gabs\Models\Historial;
 
 
 class evaluacionController extends ControllerBase
@@ -142,6 +143,25 @@ class evaluacionController extends ControllerBase
         //Ejemplos de llamadas a Service (Capa de negocio)
         $pcData['grupo'] = Services::getService('Grupo')->getGruposByUser($user_id)->getFirst();
 
+        $pcData['grupos'] = Services::getService('Grupo')->getGruposPerfil($user_id)->toArray();
+        
+        $pcData['usuarios'] = Services::getService('Grupo')->getUsuariosGrupo($user_id)->toArray();
+        $lista = $pcData['usuarios'];
+        /*foreach ($lista as $val) {
+            $arr[$val['Grupo']] = $val['Usuarios'];
+            print_r($arr[$val['Grupo']]);
+            print "</br>";
+
+        }
+        exit();*/
+        
+        $pcData['reconocimiento'] = Services::getService('Grupo')->getReconocimientos($user_id)->toArray();
+        /*for ($i=0; $i < count($pcData['grupos']); $i++) {
+            print_r($pcData['reconocimiento'][$i]['Reconocimientos']);
+            print "</br>";
+        }
+        exit();*/
+        
         $pcData['user'] = Services::getService('Users')->getUserById($user_id);
 
         $pcData['totalreconocimientos'] = Services::getService('Users')->getCantidadReconocimientosByUser($user_id);
@@ -151,9 +171,14 @@ class evaluacionController extends ControllerBase
         $pcData['mes'] = Services::getService('Users')->getMes();
 
         $evaluacionModel = new Evaluacion();
-        /*foreach ($testModel->contadorMes() as $val) { };*/ 
         $pcData['fecha'] = $evaluacionModel->contadorMes();
 
+        $modelHabilidad = new Habilidad();
+        $pcData['habil'] = $modelHabilidad->selHabilidad($user_id);
+
+        $modelHistorial = new historial();
+        $pcData['historial'] = $modelHistorial->selHistorial($user_id);
+        
 
         $menu = 'menu/topMenu';
         $content = 'evaluacion/perfil';
@@ -191,7 +216,7 @@ class evaluacionController extends ControllerBase
 
                   
               var data = google.visualization.arrayToDataTable([
-                ['Habilidad', 'Porcentaje',],
+                ['Habilidad', 'Porcentaje'],
                 ['Liderazgo', 60],
                 ['Responsbilidad', 73],
                 ['Honestidad', 78],

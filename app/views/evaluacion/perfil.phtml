@@ -96,38 +96,21 @@
                     Mis equipos de trabajo
                 </h3>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="view">
-                            <div class="caption">
-                                <a href="" rel="tooltip" title="Appreciate"><span class="fa fa-heart-o fa-2x"></span></a>
-                                <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
-                            </div>
-                            <img src="" class="img-responsive">
-                        </div>
+                <?php 
+                for ($i=0; $i < count($pcData['grupos']); $i++) { ?>   
+                 
+                    <div class="col-md-6" style="margin-bottom: 10px">
+                        
                         <div class="info">
-                            <p class="small" style="text-overflow: ellipsis"><strong> <?php print_r($pcData['grupo']->grpo_nombre); ?></strong></p>
-                            <p class="small coral text-right"><i class="fa fa-group"></i> 5 Personas</small>
+                            <p class="small" style="text-overflow: ellipsis"><strong> <?php print_r($pcData['grupos'][$i]['NombreGrupo']); ?></strong></p>
+                            <p class="small coral text-right"><i class="fa fa-group"> </i><?php print_r($pcData['usuarios'][$i]['Usuarios']); ?> Personas</small>
                         </div>
                         <div class="stats turqbg">
-                            <span> <strong>15 Reconocimientos recibidos</strong></span>
+                            <span> <strong><?php print_r($pcData['reconocimiento'][$i]['Reconocimientos']); ?> Reconocimientos recibidos</strong></span>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="view">
-                            <div class="caption">
-                                <a href="" rel="tooltip" title="Appreciate"><span class="fa fa-heart-o fa-2x"></span></a>
-                                <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
-                            </div>
-                            <img src="" class="img-responsive">
-                        </div>
-                        <div class="info">
-                            <p class="small" style="text-overflow: ellipsis"><strong> <?php print_r($pcData['grupo']->grpo_nombre); ?></strong></p>
-                            <p class="small coral text-right"><i class="fa fa-group"></i> 7 Personas</small>
-                        </div>
-                        <div class="stats turqbg">
-                            <span> <strong> 6 Reconocimientos recibidos</strong></span>
-                        </div>
-                    </div>
+                <?php } ?>
+                    
                 </div>
             </div>
             <div class="user-menu-content">
@@ -136,10 +119,10 @@
                 </h2>
                 <div class="share-links">
             		<div class="fix-historial">
-                    	<h5> <b> 07/03/2016 - </b>Haz aumentado 50 Pts el último mes</h5>
-                    	<h5> <b> 05/02/2016 - </b>Haz logrado mejorar Liderazgo </h5>
-                    	<h5> <b> 04/01/2016 - </b>Destacado en Expresion Oral en 2015</h5>
-
+                    <?php 
+                        foreach ($pcData['historial'] as $hito) { ?>
+                    	<h5><b><?php print_r("{$hito->fecha}"); ?> - </b><?php print_r($hito->hito); ?></h5>
+                    <?php } ?>
                 	</div>
             	</div>
         	</div>

@@ -25,4 +25,22 @@ class GrupoService
 		return Grupo::find();
 	}
 
+	public function getGruposPerfil($id)
+	{
+		$modelGruposP = new Grupo();
+		return $modelGruposP->getGruposPerfil($id);
+	}
+
+	public function getUsuariosGrupo($id)
+	{
+		$modelUsuariosGrupo = new Grupo();
+		return $modelUsuariosGrupo->getUsuarios($id);
+	}
+
+	public function getReconocimientos($id)
+	{
+		$modelReconocimiento = new Grupo();
+		return $modelReconocimiento->getRecon($id);
+	}
+
 }

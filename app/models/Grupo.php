@@ -65,4 +65,22 @@ class Grupo extends Model
         );                                 
     }    
 
-}
+    public function getGruposPerfil($id)
+    {
+        $query = new Query("SELECT g.grpo_nombre as NombreGrupo FROM Gabs\Models\UserGrupo ug, Gabs\Models\Grupo g WHERE ug.grpo_id = g.grpo_id and ug.user_id = $id ORDER BY g.grpo_id asc", $this->getDI());
+        return $query->execute();
+    }
+
+    public function getUsuarios($id)
+    {
+        $query = new Query("SELECT ug.grpo_id AS Grupo, COUNT(ug.user_id) AS Usuarios FROM Gabs\Models\UserGrupo ug, Gabs\Models\Grupo g, Gabs\Models\Users u WHERE ug.grpo_id = g.grpo_id AND ug.user_id = u.id GROUP BY ug.grpo_id", $this->getDI());
+        return $query->execute();
+    }
+
+    public function getRecon($id)
+    {
+        $query = new Query("SELECT COUNT(eg.eval_grpo_id) as Reconocimientos FROM Gabs\Models\Evaluacion e, Gabs\Models\EvaluacionGrupo eg, Gabs\Models\Grupo g, Gabs\Models\UserGrupo ug WHERE eg.grpo_id = g.grpo_id AND e.eval_id = eg.eval_id AND g.grpo_id = ug.grpo_id AND ug.user_id = $id GROUP BY eg.grpo_id", $this->getDI());
+        return $query->execute();
+    }
+
+} 
